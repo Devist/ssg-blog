@@ -1,5 +1,5 @@
 import React from 'react'
-import './button.css'
+import './index.css'
 
 interface ButtonProps {
   /**
@@ -25,7 +25,7 @@ interface ButtonProps {
 }
 
 /**
- * Primary UI component for user interaction
+ * 사용자와의 상호작용을 위한 기본 UI 구성요소 중 하나입니다.
  */
 export const Button = ({
   primary = false,

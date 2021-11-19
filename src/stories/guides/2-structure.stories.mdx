@@ -1,0 +1,106 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+import Folder from '../images/guide-develop/folder.png'
+import Folder2 from '../images/guide-develop/folder2.png'
+
+import Ca1 from '../images/guide-develop/clean-architecture-1.png'
+import Ca2 from '../images/guide-develop/clean-architecture-communication-flow.png'
+import Ca3 from '../images/guide-develop/ca-inversion-of-control.png'
+import Ca4 from '../images/guide-develop/ca-ours.png'
+import Ca5 from '../images/guide-develop/ca-ours2.png'
+
+<Meta title="🐱‍🏍 개발가이드 /🧐 프로젝트 구조" />
+
+# 프로젝트 구조
+
+---
+
+해당 프로젝트는 React + Mobx + Typescript 로 구성되어 있습니다.
+
+또한, 유지보수를 용이하게 하기 위해 [Clean Architecture](https://blog.coderifleman.com/2017/12/18/the-clean-architecture/)를 일부 적용 했습니다.
+
+프로젝트의 전체 폴더 구조를 보면 아래와 같습니다.
+
+<img src={Folder} alt="direction" />
+
+<br></br>
+<br></br>
+
+#### src/@types 폴더
+
+프로젝트 내에서 사용하는 Entity 외의 타입을 정의합니다. (Entity에 대해서는 아래에 설명)
+
+#### src/stories 폴더
+
+현재 보고 있는 Storybook 관련된 컨텐츠가 작성되어 있습니다. 가이드 문서, 컴포넌트 사용법 등이 포함되어 있습니다.
+
+#### src/react-app-env.d.ts
+
+사용중인 모듈을 선언합니다.
+
+#### tsconfig.paths.json
+
+매번 상대 경로로 import 하는 것은 대규모 애플리케이션에서 많은 혼란과 불편을 야기하게 됩니다. 이를 위해 path alias를 설정하기 위한 정보가 들어 있습니다.
+
+<br />
+<br />
+
+## 클린 아키텍처
+
+클린 아키텍처 관점에서, 핵심 폴더는 아래와 같이 **[domains / respositories / services / stores / ui]** 입니다.
+
+<img src={Folder2} alt="core-folders" />
+
+우리 프로젝트의 핵심 구조를 알아보기 전에, 클린 아키텍처를 이해해야 합니다.
+
+<br />
+<br />
+
+### The Clean Architecture
+
+<img src={Ca1} alt="the-clean-architecture" />
+
+다양한 아키텍처와 마찬가지로 클린 아키텍처의 주요 목적은 관심사를 분리하는 것입니다. 각 관심사에 따라 계층 구조를 나누고, 세부 구현보다는 도메인 중심으로 설계하고 내부 영역이 프레임 워크 또는 데이터베이스 UI와 같은 외부 요소에 의존하지 않는지 확인합니다.
+
+- 세부 구현 영역과 도메인 영역을 구분합니다.
+- 아키텍처는 프레임워크에 의존하지 않습니다.
+- 외부 영역은 내부 영역에 의존할 수 있지만 내부 영역은 외부 영역에 의존할 수 없습니다.
+- 고수준 및 저수준 모듈 모두 추상화에 의존합니다.
+
+### Communication Flow
+
+<img src={Ca2} alt="communication-flow" />
+
+- Use Cases 는 Entities와 Repository Interface 에 의존하고 있습니다.
+
+### Inversion of Control
+
+<img src={Ca3} alt="dependency injection" />
+
+'Repository'의 경우 어댑터 계층이므로 'Use Case'에서 'Repository'에 대해 알면 안됩니다.
+
+따라서 'Use Case'에서는 도메인 계층에 위치한 Repository Interface를 통해 구현 한 후 [Dependency Injection](https://medium.com/@jang.wangsu/di-dependency-injection-%EC%9D%B4%EB%9E%80-1b12fdefec4f)을 통해 운영해야 합니다.
+
+### 프로젝트 구조
+
+현재 프로젝트에서는, 클린 아키텍처를 더 단순하게 사용합니다.
+
+<img src={Ca4} alt="ca-ours" />
+
+#### Entities
+
+핵심 비즈니스 규칙이 있습니다. 가장 중요한 논리가 포함되어 있으며, 종속성이 없는 순수 객체입니다.
+
+#### Services
+
+다음 원은 Service 입니다. 특정 엔티티에 대한 사용 사례 (Usecase)라고 생각하면 됩니다.
+
+Entity를 가져오고 조작하며, 종속성 규칙을 따르기 때문에 Entity 에만 의존합니다.
+
+또한 위의 설명과는 약간 다르게, 직접 의존성을 주입합니다.
+
+#### UI, Stores
+
+해당 부분은 React, vue와 같은 프레임워크 등 비즈니스 로직과 크게 관련이 없는 부분이며, 언제든 교체할 수 있습니다.
+
+현재 UI는 React를, Store는 Mobx 를 사용합니다.

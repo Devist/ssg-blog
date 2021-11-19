@@ -1,4 +1,4 @@
-import { Button } from './Button'
+import { Button } from '.'
 
 export default {
   title: '@Core/ 👶 Atoms / 버튼',

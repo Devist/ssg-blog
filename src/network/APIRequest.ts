@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { HTTPMethod } from '@src/repositories/network/APIClient'
+import { HTTPMethod } from '@/network/APIClient'
 
 export type APIRequest<R> = {
   response: R

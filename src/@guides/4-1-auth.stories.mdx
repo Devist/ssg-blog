@@ -1,0 +1,109 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="⛷ 개발가이드 /🔐 역할 및 권한 설정" />
+
+# 역할/권한 설정
+
+---
+
+<br />
+
+### 역할(ROLE)과 권한(CAN)의 정의
+
+- 역할(ROLE): 관리자, 사용자 등 서비스 내 주어진 위치
+- 권한(CAN): 수정을 할 수 있는 권한이 있는 등 할 수 있는 범위
+
+<br />
+
+### 역할과 권한으로 처리하는 것
+
+- **페이지 접근 제어** : 역할로 처리. 관리자만 접근할 수 있는 페이지 주소를 누군가 알고 있어서 접근하는 경우 권한 없음 페이지를 보여줍니다.
+- **페이지 내 기능** : 권한으로 처리. 모든 권한의 사용자가 접근 가능한 페이지이지만, 페이지 내 구성 등이 달라지는 부분을 역할로 처리합니다.
+
+<br />
+
+### 역할에 따른 권한의 부여
+
+- 위치 : **src/ui/acl (access control list)**
+
+```javascript
+// permission-maps.js
+
+// 페이지 접근 제어
+export const ROLES = {
+  ADMIN: 'admin',
+  USER: 'user'
+}
+
+export const CAN = {
+  MANAGE_NOTICE: 'manage-notice',
+  CAN_EDIT: 'can-edit',
+  CAN_DELETE: 'can-delete',
+  CAN_VIEW: 'can-view'
+}
+
+// 페이지 내 기능 제어
+export const PERMISSIONS = {
+  [ROLES.USER]: [CAN.MANAGE_NOTICE],
+  [ROLES.ADMIN]: []
+}
+```
+
+### 페이지 접근 제어 (역할)
+
+- 위치: **src/ui/router/AuthenticationCheck.js**
+
+```javascript
+// router/routes 내 파일에서 사용
+
+const Routes = [
+  ... ,
+  {
+    path: '/login',
+    component: Auth(
+      lazy(() => import('../../views/Login')),  // factory
+      null,  // option
+      true   // adminRoutes
+    )
+  },
+  ... ,
+]
+
+```
+
+### 페이지 내 기능 처리 (권한)
+
+```jsx
+/**
+ * 사용자에게 권한이 없을 경우 안 보이도록 처리
+ */
+<PermissionsGate
+  scopes={[SCOPES.canEdit]}
+>
+  <Input />
+</PermissionsGate>
+
+
+/**
+ * 사용자에게 권한이 없을 경우 대체 컴포넌트 보이도록 처리
+ */
+<PermissionsGate
+  scopes={[SCOPES.canEdit]}
+  RenderError={() => <p>볼 수 있는 권한이 없습니다!</p>}
+>
+  <h1>비밀 컨텐츠</h1>
+  <p>edit 권한 있는 사람한테만 보여야 함!</p>
+</PermissionsGate>
+
+
+/**
+ * 사용자에게 권한이 없어도 자식 컴포넌트가 보이가 하되,
+ * 자식 컴포넌트에게 특정 props 전달되어 알 수 있도록 처리
+ */
+<PermissionsGate
+  errorProps={{ disabled: true }}
+  scopes={[SCOPES.canEdit]}
+>
+  <Input />
+</PermissionsGate>
+```

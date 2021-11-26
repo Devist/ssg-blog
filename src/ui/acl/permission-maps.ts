@@ -3,13 +3,13 @@ export const ROLES = {
   EDITOR: 'editor'
 }
 
-export const CAN = {
-  EDIT: 'can-edit',
-  DELETE: 'can-delete',
-  VIEW: 'can-view'
+export const SCOPES = {
+  canEdit: 'can-edit',
+  canDelete: 'can-delete',
+  canView: 'can-view'
 }
 
 export const PERMISSIONS = {
-  [ROLES.USER]: [CAN.VIEW],
-  [ROLES.EDITOR]: [CAN.EDIT, CAN.DELETE, CAN.VIEW]
+  [ROLES.USER]: [SCOPES.canView],
+  [ROLES.EDITOR]: [SCOPES.canEdit, SCOPES.canDelete, SCOPES.canView]
 }

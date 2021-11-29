@@ -8,33 +8,22 @@ module.exports = {
     screens: {
       sm: '480px',
       md: '768px',
-      lg: '976px',
-      xl: '1440px'
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1536px'
     },
     colors: {
-      gray: colors.coolGray,
-      blue: colors.lightBlue,
-      red: colors.rose,
-      pink: colors.fuchsia
+      primary: '#4c56ff',
+      secondary: '#5FF0A5',
+      success: '#1AC47D',
+      danger: '#EA5455',
+      warning: '#FA9F43',
+      dark: '#1E1E1E',
+      white: '#ffffff'
     },
     extend: {}
   },
   variants: {},
   plugins: [],
-  purge: {
-    // Filenames to scan for classes
-    content: [
-      './src/**/*.html',
-      './src/**/*.js',
-      './src/**/*.jsx',
-      './src/**/*.ts',
-      './src/**/*.tsx',
-      './public/index.html'
-    ],
-    // Options passed to PurgeCSS
-    options: {
-      // Whitelist specific selectors by name
-      // safelist: [],
-    }
-  }
+  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html']
 }

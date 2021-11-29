@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { HTTPMethod } from '@/network/APIClient'
 
 export type APIRequest<R> = {

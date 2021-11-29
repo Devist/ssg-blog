@@ -1,6 +1,6 @@
 import { cloneElement } from 'react'
 import { PERMISSIONS } from './permission-maps'
-import { useStores } from '@src/stores'
+import { useStores } from '@/stores'
 
 const hasPermission = ({ permissions, scopes }) => {
   const scopesMap = {}

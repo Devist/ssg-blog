@@ -10,5 +10,10 @@ module.exports = {
         debug: false
       }
     }
-  ]
+  ],
+  style: {
+    postcss: {
+      plugins: [require('tailwindcss'), require('autoprefixer')]
+    }
+  }
 }

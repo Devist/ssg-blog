@@ -1,4 +1,4 @@
-import { IUser, UserRoleType } from '@src/entities'
+import { IUser, USER_ROLE_TYPE } from '@/entities'
 import { makeAutoObservable } from 'mobx'
 
 type settings = {

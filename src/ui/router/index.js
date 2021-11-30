@@ -10,7 +10,7 @@ import { observer } from 'mobx-react'
 import { BrowserRouter as AppRouter, Route, Switch, Redirect } from 'react-router-dom'
 
 // ** Routes & Default Routes
-import { DefaultRoute, Routes } from './routes'
+import { DefaultRoute, Routes } from './modules'
 
 // ** 레이아웃
 import BlankLayout from '@/ui/@core/layouts/BlankLayout'
@@ -110,7 +110,6 @@ const Router = observer(() => {
                           <Suspense fallback={null}>
                             <div>
                               <route.component {...props} />
-                              {/* <FinalRoute route={route} {...props} /> */}
                             </div>
                           </Suspense>
                         )

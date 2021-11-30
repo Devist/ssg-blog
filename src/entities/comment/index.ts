@@ -1,3 +1,3 @@
-export default function 삭제해주세요() {
-  console.log('hello')
-}
+export * from './comment'
+export * from './comment.types'
+export * from './comment.mock'

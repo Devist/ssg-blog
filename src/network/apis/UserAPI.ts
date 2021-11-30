@@ -11,6 +11,7 @@ export namespace UserAPI {
   export class Fetch implements APIRequest<IUserData> {
     response!: IUserData
     path: string
+    baseURL = USERS
     method = HTTPMethod.GET
     parse = (data: AxiosResponse) => data.data
     constructor(id: number) {

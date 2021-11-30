@@ -1,5 +1,5 @@
 declare interface IList<T> {
-  page: number
-  size: number
+  _page: number
+  _size: number
   items: T[]
 }

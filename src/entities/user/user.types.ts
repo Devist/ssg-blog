@@ -3,11 +3,6 @@ export enum USER_ROLE_TYPE {
   USER = 'user'
 }
 
-// optional(?) 이 많을 때에는 별도로 리퀘스트 타입을 정의하는 것도 괜찮을 듯
-// 또는 별도의 엔티티로 정의
-// 로그인을 별도로?
-export interface IUserRequest {}
-
 export interface IUserData {
   email: string
   id: number

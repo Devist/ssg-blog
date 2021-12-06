@@ -7,11 +7,7 @@ index.tsx
 @core
 layouts
 navigation
-SecondPage.js
 NotAuthorized.js
-Login.js
-Home.js
-Error.js
 ThemeColors.js
 Router.js
 stories

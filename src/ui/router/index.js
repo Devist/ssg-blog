@@ -53,9 +53,6 @@ const Router = observer(() => {
     return Object.keys(Layouts).map((layout, index) => {
       // ** 레이아웃 경로와 라우트를 가져옵니다.
       const { LayoutRoutes, LayoutPaths } = LayoutRoutesAndPaths(layout)
-      console.log(layout)
-      console.log(LayoutRoutes)
-      console.log(LayoutPaths)
 
       const routerProps = {}
 

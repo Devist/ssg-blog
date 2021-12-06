@@ -5,9 +5,8 @@ export const mockPostsData = (): IPostData[] => [
   {
     userId: 1,
     id: 10,
-    title: 'optio molestias id quia eum',
-    body:
-      'quo et expedita modi cum officia vel magni\ndoloribus qui repudiandae\nvero nisi sit\nquos veniam quod sed accusamus veritatis error'
+    title: '제목입니다.',
+    body: '내용입니다. 내용입니다. 내용입니다. 내용입니다.'
   },
   {
     userId: 2,

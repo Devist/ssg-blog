@@ -1,16 +1,15 @@
-import { IUser, USER_ROLE_TYPE } from '@/entities'
 import { makeAutoObservable } from 'mobx'
 
-type settings = {
+type IStates = {
   openTour: boolean
 }
 
-export class AppStore implements settings {
-  public openTour: boolean
+export class AppStore implements IStates {
+  public openTour: boolean = false
+  public appWidth: number = 0
 
   constructor() {
     makeAutoObservable(this)
-    this.openTour = false
   }
 
   public setOpenTour(open: boolean) {

@@ -16,10 +16,10 @@ const BlankLayout = ({ children, ...rest }) => {
   }
 
   return (
-    <div className="container mx-auto ">
-      <div class="flex items-center justify-center h-screen">
-        <div class="bg-indigo-800 text-primary font-bold rounded-lg border shadow-lg p-10">
-          {children}
+    <div className=" bg-gray-100">
+      <div className="container mx-auto">
+        <div className="flex items-center justify-center h-screen">
+          <div>{children}</div>
         </div>
       </div>
     </div>

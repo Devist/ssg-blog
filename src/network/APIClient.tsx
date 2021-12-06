@@ -62,7 +62,7 @@ export class APIClient {
     return data
   }
 
-  // Convert axios error into APIError
+  // axios error 를 우리가 정의한 APIError 로 변환
   private static normalizeError(error: any): IApiError {
     return {
       code: error.response && error.response.status,

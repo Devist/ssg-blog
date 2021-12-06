@@ -7,15 +7,17 @@ export namespace UserAPI {
   // 베이스
   const USERS = 'user'
 
-  // 유저 정보 가져오기
+  /**
+   * 유저정보 가져오기
+   * user/{id}
+   */
   export class Fetch implements APIRequest<IUserData> {
     response!: IUserData
-    path: string
-    baseURL = USERS
+    path = USERS
     method = HTTPMethod.GET
     parse = (data: AxiosResponse) => data.data
     constructor(id: number) {
-      this.path = `${USERS}/${id}`
+      this.path.concat(`/${id}`)
     }
   }
 }

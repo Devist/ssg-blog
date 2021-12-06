@@ -15,6 +15,7 @@ import { DefaultRoute, Routes } from './modules'
 // ** 레이아웃
 import BlankLayout from '@/ui/@core/layouts/BlankLayout'
 import DefaultLayout from '@/ui/@core/layouts/DefaultLayout'
+import { useStores } from '@/stores'
 
 // import { useStores } from '@/stores'
 
@@ -26,7 +27,7 @@ const Router = observer(() => {
   const Layouts = { BlankLayout, DefaultLayout }
 
   // 유저 정보 및 커스텀 정보 가져오기
-  // const { userStore } = useStores()
+  const { userStore } = useStores()
 
   const NotAuthorized = lazy(() => import('@/ui/views/errors/NotAuthorized'))
   const NotFound = lazy(() => import('@/ui/views/errors/NotFound'))
@@ -80,7 +81,6 @@ const Router = observer(() => {
                           <Suspense fallback={null}>
                             <div>
                               <route.component {...props} />
-                              {/* <FinalRoute route={route} {...props} /> */}
                             </div>
                           </Suspense>
                         )
@@ -132,20 +132,18 @@ const Router = observer(() => {
       ) : ( */}
       <Switch>
         {/* 사용자가 로그인 한 경우 사용자를 DefaultRoute 로 리디렉션하고 그렇지 않으면 로그인합니다. */}
-        {/* <Route
-                exact
-                path='/'
-                render={() => {
-                  return isUserLoggedIn() ? <Redirect to={DefaultRoute} /> : <Redirect to='/login' />
-                }}
-              /> */}
         <Route
           exact
           path="/"
           render={() => {
-            return <Redirect to={DefaultRoute} />
+            return userStore.user.id > 0 ? (
+              <Redirect to={DefaultRoute} />
+            ) : (
+              <Redirect to="/auth/login" />
+            )
           }}
         />
+
         {/* Not Auth Route */}
         <Route
           exact

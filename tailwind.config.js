@@ -19,7 +19,8 @@ module.exports = {
       danger: '#EA5455',
       warning: '#FA9F43',
       dark: '#1E1E1E',
-      white: '#ffffff'
+      white: '#ffffff',
+      ...colors
     },
     extend: {}
   },

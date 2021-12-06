@@ -1,6 +1,6 @@
 export enum CATEGORY_TYPE {
-  DEVELOPMENT,
-  NOTICE
+  DEVELOPMENT = 'development',
+  NOTICE = 'notice'
 }
 
 export interface IPostData {
@@ -16,3 +16,8 @@ export interface IPost extends IPostData {
   category: CATEGORY_TYPE
   validate(): boolean
 }
+
+export const POST_MAX_TITLE_LENGTH = 100
+export const POST_MIN_TITLE_LENGTH = 20
+export const POST_MAX_BODY_LENGTH = 5000
+export const POST_MIN_BODY_LENGTH = 20

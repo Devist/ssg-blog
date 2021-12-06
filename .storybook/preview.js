@@ -17,3 +17,5 @@ window.addEventListener('popstate', function () {
   //code
   console.log('pop')
 })
+
+import '@/ui/@core/scss/index.css'

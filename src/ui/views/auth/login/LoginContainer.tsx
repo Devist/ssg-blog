@@ -12,7 +12,7 @@ function LoginContainer() {
   const [isPasswordValid, setIsPasswordValid] = useState<boolean>(true)
 
   const history = useHistory()
-  const userService = new LoginService(new UserRepository())
+  const loginService = new LoginService(new UserRepository())
 
   // *** effects
   useEffect(() => {}, [])
@@ -20,7 +20,7 @@ function LoginContainer() {
   // 자식에게 전달하는 이벤트의 경우, handlers에 모은다.
   const handlers = {
     onSubmit: (e: React.FormEvent<HTMLFormElement>): void => {
-      userService
+      loginService
         .loginUser(login)
         .then(() => {
           history.push('/posts')
@@ -30,8 +30,8 @@ function LoginContainer() {
     onChange: (e: React.ChangeEvent<HTMLInputElement>): void => {
       const { value, name } = e.target
       setLogin({ ...login, [name]: value })
-      setIsEmailValid(userService.isValidEmail(login))
-      setIsPasswordValid(userService.isValidPassword(login))
+      setIsEmailValid(loginService.isValidEmail(login))
+      setIsPasswordValid(loginService.isValidPassword(login))
     }
   }
 

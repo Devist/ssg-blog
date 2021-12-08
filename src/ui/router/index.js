@@ -4,30 +4,41 @@ import { Suspense, lazy } from 'react'
 // ** Utils
 // import { isUserLoggedIn } from '@/utils'
 
-import { observer } from 'mobx-react'
-
 // ** Router Components
 import { BrowserRouter as AppRouter, Route, Switch, Redirect } from 'react-router-dom'
 
 // ** Routes & Default Routes
 import { DefaultRoute, Routes } from './modules'
 
+// *** Cookies
+import Cookies from 'js-cookie'
+
 // ** 레이아웃
 import BlankLayout from '@/ui/@core/layouts/BlankLayout'
 import DefaultLayout from '@/ui/@core/layouts/DefaultLayout'
+
 import { useStores } from '@/stores'
 
-// import { useStores } from '@/stores'
+import { UserService } from '@/services/user'
+import UserRepository from '@/repositories/UserRepository'
 
 /**
  *  라우터
  */
-const Router = observer(() => {
+const Router = () => {
   // ** 사용 가능한 모든 레이아웃
   const Layouts = { BlankLayout, DefaultLayout }
 
   // 유저 정보 및 커스텀 정보 가져오기
   const { userStore } = useStores()
+
+  // token 가져오기
+  const token = Cookies.get('token')
+  userStore.token = token
+  userStore.user.id = token
+
+  const userService = new UserService(new UserRepository())
+  if (token) userService.fetchUser(token)
 
   const NotAuthorized = lazy(() => import('@/ui/views/errors/NotAuthorized'))
   const NotFound = lazy(() => import('@/ui/views/errors/NotFound'))
@@ -165,6 +176,6 @@ const Router = observer(() => {
       {/* )} */}
     </AppRouter>
   )
-})
+}
 
 export default Router

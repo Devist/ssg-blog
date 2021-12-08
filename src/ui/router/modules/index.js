@@ -6,7 +6,7 @@ import PostRoutes from './posts'
 // import Auth from '../AuthenticationCheck'
 
 // ** Default Route
-const DefaultRoute = '/'
+const DefaultRoute = '/posts'
 
 // ** Merge Routes
 const Routes = [

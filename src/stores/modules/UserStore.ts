@@ -43,7 +43,7 @@ export class UserStore implements IStates {
 
   // *** computed ***************************************
   get emailAndId() {
-    return `${this.user.email}(${this.user.id})`
+    return `${this.user.email}(ID : ${this.user.id})`
   }
 }
 

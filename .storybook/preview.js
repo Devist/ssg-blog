@@ -8,14 +8,4 @@ export const parameters = {
   }
 }
 
-window.addEventListener('hashchange', function () {
-  //code
-  console.log('hash')
-})
-
-window.addEventListener('popstate', function () {
-  //code
-  console.log('pop')
-})
-
 import '@/ui/@core/scss/index.css'

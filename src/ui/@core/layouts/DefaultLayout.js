@@ -1,11 +1,21 @@
 // ** React Imports
 import { useEffect, useState } from 'react'
 
+import { observer } from 'mobx-react'
+
+import logo from '@/ui/@core/assets/images/logo/logo.png'
+import { useStores } from '@/stores'
+import { useHistory } from 'react-router-dom'
+
+import Cookies from 'js-cookie'
+
 const DefaultLayout = ({ children, ...rest }) => {
   // ** States
   const [isMounted, setIsMounted] = useState(false)
 
-  //** ComponentDidMount
+  const { userStore } = useStores()
+  const history = useHistory()
+
   useEffect(() => {
     setIsMounted(true)
     return () => setIsMounted(false)
@@ -18,23 +28,28 @@ const DefaultLayout = ({ children, ...rest }) => {
   return (
     <>
       {/* 네비게이션. 추후 분리 */}
-      <nav className="bg-primary text-white">
-        <ul className="container mx-auto flex">
+      <nav className="text-white p-2 border-b-1 border-gray-400">
+        <ul className="container mx-auto flex justify-between items-center">
           <li className="mr-6">
-            <a className="text-blue-500 hover:text-blue-800" href="#">
-              SSG BLOG
-            </a>
+            <img src={logo} alt="logo" style={{ height: '36px' }} />
           </li>
-          <li className="mr-6">
-            <a className="text-blue-500 hover:text-blue-800" href="#">
-              내정보
-            </a>
-          </li>
-          <li className="mr-6">
-            <a className="text-gray-400 cursor-not-allowed" href="#">
-              로그아웃
-            </a>
-          </li>
+          <div className="flex">
+            <li className="mr-6">
+              <a className="text-dark hover:text-primary no-underline cursor-pointer">
+                {userStore.emailAndId}
+              </a>
+            </li>
+            <li className="mr-6">
+              <a
+                className="text-dark hover:text-primary no-underline cursor-pointer"
+                onClick={() => {
+                  Cookies.remove('token')
+                  history.push('/auth/login')
+                }}>
+                로그아웃
+              </a>
+            </li>
+          </div>
         </ul>
       </nav>
 
@@ -44,4 +59,4 @@ const DefaultLayout = ({ children, ...rest }) => {
   )
 }
 
-export default DefaultLayout
+export default observer(DefaultLayout)

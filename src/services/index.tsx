@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { UserService } from './user'
 import UserRepository from '@/repositories/UserRepository'
+import { LoginService } from '@/services/login'
 
 export default class RootService {
-  userService
+  loginService
 
   constructor() {
-    this.userService = new UserService(new UserRepository())
+    this.loginService = new LoginService(new UserRepository())
   }
 }
 

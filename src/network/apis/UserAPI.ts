@@ -5,7 +5,7 @@ import { IUserData } from '@/entities'
 
 export namespace UserAPI {
   // 베이스
-  const USERS = 'user'
+  const USERS = 'users'
 
   /**
    * 유저정보 가져오기
@@ -17,7 +17,7 @@ export namespace UserAPI {
     method = HTTPMethod.GET
     parse = (data: AxiosResponse) => data.data
     constructor(id: number) {
-      this.path.concat(`/${id}`)
+      this.path = this.path.concat(`/${id}`)
     }
   }
 }

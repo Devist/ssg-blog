@@ -11,13 +11,14 @@ type Props = {
   valid: boolean
   errorMessage?: string
   placeholder?: string
+  name?: string
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 /**
  * INPUT 컴포넌트
  */
-function Input({ id, label, value, valid, errorMessage, placeholder, onChange }: Props) {
+function Input({ id, label, value, valid, name, errorMessage, placeholder, onChange }: Props) {
   const [inputValue, setInputValue] = useState<string | number | ReadonlyArray<string> | undefined>(
     value
   )
@@ -36,6 +37,7 @@ function Input({ id, label, value, valid, errorMessage, placeholder, onChange }:
       )}
       <input
         id={id}
+        name={name}
         className={classnames(
           'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline',
           {
@@ -53,7 +55,6 @@ function Input({ id, label, value, valid, errorMessage, placeholder, onChange }:
 }
 
 Input.defaultProps = {
-  value: '',
   valid: true,
   errorMessage: null
 }

@@ -1,5 +1,4 @@
-function PostList() {
-  return <div className="text-primary">포스트 리스트</div>
-}
+import { observer } from 'mobx-react'
+import PostListContainer from './PostListContainer'
 
-export default PostList
+export default observer(PostListContainer)

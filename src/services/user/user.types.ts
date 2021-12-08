@@ -1,11 +1,10 @@
-import { ILoginData, IUserData, User } from '@/entities'
+import { IUser, IUserData } from '@/entities'
 
 export interface IUserService {
-  loginUser(login: ILoginData): Promise<User>
-  getUser(): IUserData
+  getUser(): IUser
 }
 
 export interface IUserServiceMock {
-  loginUser: jest.Mock<Promise<User>>
+  loginUser: jest.Mock<Promise<any>>
   getUser: jest.Mock<IUserData>
 }

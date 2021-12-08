@@ -2,7 +2,7 @@ import { IUserData } from '@/entities'
 import { APIClient } from '@/network/APIClient'
 import { UserAPI } from '@/network/apis/UserAPI'
 import BaseRepository from './BaseRepository'
-import { useStores } from '../stores/index'
+import { useStores } from '@/stores/index'
 
 export default class UsersRepository implements BaseRepository {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -12,12 +12,11 @@ export default class UsersRepository implements BaseRepository {
     return await APIClient.shared.request(new UserAPI.Fetch(id))
   }
 
-  saveItem(item: IUserData): void {
-    this.userStore.user = item
+  saveItem(userData: IUserData): void {
+    this.userStore.user = userData
   }
 
   getItem(): IUserData {
-    console.log(this.userStore)
     return this.userStore.user
   }
 }

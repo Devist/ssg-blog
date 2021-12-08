@@ -1,38 +1,49 @@
-import { useHistory } from 'react-router-dom'
-import { UserService } from '@/services/user'
-import UserRepository from '@/repositories/UserRepository'
-import { FormEvent } from 'react'
 import Input from '@/ui/@core/components/atoms/input'
 
 type Props = {
-  onSubmit: (e: FormEvent<HTMLFormElement>) => void
+  isEmailValid: boolean
+  isPasswordValid: boolean
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-function Login({ onSubmit }: Props) {
-  const methods = {
+function LoginPresenter({ isEmailValid, isPasswordValid, onSubmit, onChange }: Props) {
+  // 내부에서 처리하는 경우, events에 구현한다.
+  const events = {
     handleSubmit: (e: React.FormEvent<HTMLFormElement>): void => {
+      e.preventDefault()
       onSubmit(e)
+    },
+    onChange: (e: React.ChangeEvent<HTMLInputElement>): void => {
+      onChange(e)
     }
   }
+
   return (
     <div className="w-full max-w-xs items-center">
       <h1 className="text-primary text-center py-1">SSG 블로그</h1>
 
       <form
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-        onSubmit={methods.handleSubmit}>
+        onSubmit={events.handleSubmit}>
         <div className="mb-4">
           <Input
+            name="email"
             label="이메일"
+            valid={isEmailValid}
             placeholder="이메일을 입력하세요"
             errorMessage="이메일은 5자 이상, 50자 이하이어야 하며, @가 포함되어야 합니다."
+            onChange={events.onChange}
           />
         </div>
         <div className="mb-6">
           <Input
+            name="password"
             label="비밀번호"
+            valid={isPasswordValid}
             placeholder="비밀번호를 입력하세요"
             errorMessage="비밀번호는 8자 이상, 특수문자 포함 3개의 조합이어야 합니다."
+            onChange={events.onChange}
           />
         </div>
         <div className="flex items-center justify-end">
@@ -50,4 +61,4 @@ function Login({ onSubmit }: Props) {
   )
 }
 
-export default Login
+export default LoginPresenter

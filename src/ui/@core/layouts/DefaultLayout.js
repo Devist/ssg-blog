@@ -13,6 +13,9 @@ const DefaultLayout = ({ children, ...rest }) => {
   // ** States
   const [isMounted, setIsMounted] = useState(false)
 
+  // react에서 context에 대한 문서에 의하여,
+  // 전역적 데이터 중 어떤 서비스 측면이 아니라 사용자, 테마, 선호되는 언어 등,
+  // 서비스가 아닌 전역적이라 여겨질만한 것들에 대하여는 직접 처리할 때는 스토어로 호출한다.
   const { userStore } = useStores()
   const history = useHistory()
 

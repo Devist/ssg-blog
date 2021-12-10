@@ -28,7 +28,7 @@
     "preview": "set PORT=5015 && craco start",
     "build": "craco build",
     "serve": "serve -s build",
-    "test": "craco test --watchAll",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6007 -s public --no-manager-cache",
     "build-storybook": "build-storybook -s public"

@@ -8,5 +8,6 @@ export interface ILoginService {
 
 export interface ILoginServiceMock {
   loginUser: jest.Mock<Promise<any>>
-  getUser: jest.Mock<IUserData>
+  isValidEmail: jest.Mock<boolean>
+  isValidPassword: jest.Mock<boolean>
 }

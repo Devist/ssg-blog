@@ -20,11 +20,11 @@ export class LoginService implements ILoginService {
   async loginUser(loginData: ILoginData): Promise<any> {
     if (loginData.password !== 'P@ssw0rd') await Promise.reject('비밀번호 틀림')
 
-    const userId =
-      idsFromEmail[loginData.email as keyof typeof idsFromEmail] || idsFromEmail.default
+    const userId = this.matchIdByFakeEmail(loginData.email)
 
     return await this.userRepository.fetchItem(userId).then((userData: IUserData) => {
-      Cookies.set('token', userData.id, { expires: 7 })
+      this.setToken(userData.id)
+
       this.userRepository.saveItem({
         ...userData,
         email:
@@ -41,5 +41,13 @@ export class LoginService implements ILoginService {
 
   isValidPassword(loginData: ILoginData): boolean {
     return new Login(loginData).isValidPassword()
+  }
+
+  private setToken(token: number) {
+    Cookies.set('token', token, { expires: 7 })
+  }
+
+  private matchIdByFakeEmail(email: string) {
+    return idsFromEmail[email as keyof typeof idsFromEmail] || idsFromEmail.default
   }
 }

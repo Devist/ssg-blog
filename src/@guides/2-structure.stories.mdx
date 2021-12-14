@@ -7,6 +7,8 @@ import Ca2 from './images/clean-architecture-communication-flow.png'
 import Ca3 from './images/ca-inversion-of-control.png'
 import Ca4 from './images/ca-ours.png'
 import Ca5 from './images/ca-ours2.png'
+import Ca6 from './images/clean_parallel.png'
+import Ca7 from './images/clean_arch1.png'
 
 <Meta title="⛷ 개발가이드 /🧿 프로젝트 구조" />
 
@@ -27,9 +29,31 @@ import Ca5 from './images/ca-ours2.png'
 <br></br>
 <br></br>
 
-## 클린 아키텍처
+## 1.클린 아키텍쳐
 
-저희 프로젝트는 유지보수를 용이하게 하기 위해 [Clean Architecture](https://blog.coderifleman.com/2017/12/18/the-clean-architecture/)를 일부 적용 했습니다.
+- 참조 : [Clean Architecture Guide (with tested examples): Data Flow != Dependency Rule](https://proandroiddev.com/clean-architecture-data-flow-dependency-rule-615ffdd79e29)
+
+### A. 데이터 흐름 ( Communication flow )
+
+해당 프로젝트는 유지보수를 용이하게 하기 위해 [Clean Architecture](https://blog.coderifleman.com/2017/12/18/the-clean-architecture/)를 일부 적용 했습니다.
+
+클린 아키텍쳐의 데이터 흐름은 다음과 같습니다.
+
+<img src={Ca7} width="70%" />
+
+(블로그 리스트를 읽는 페이지를 사용자가 접속했다고 상상해 보세요.)
+
+> #### 1 : UI는 Presenter(ViewModel)에서 메서드를 호출합니다. (리스트 페이지는 ViewModel로부터 포스팅 리스트 정보를 호출)
+>
+> #### 2 : Presenter(ViewModel)는 UseCase(로직)를 실행합니다. (ViewModel는 UseCase에 구현된 포스팅 리스트 정보 가져오기 로직을 실행)
+>
+> #### 3 : UseCase는 Repository로부터 데이터를 결합합니다. (UseCase는 Repository(CRUD)를 이용해 포스팅 리스트 정보 데이터를 가져옴)
+>
+> #### 4 :
+
+<img src={Ca6} />
+
+## 클린 아키텍처
 
 프로젝트의 전체 폴더 구조를 보면 아래와 같습니다.
 
@@ -37,11 +61,11 @@ import Ca5 from './images/ca-ours2.png'
 
 <img src={Folder} alt="direction" />
 
-✋ 각각의 레이어 계층은 임포트의 편리함과, 중복 선언 등을 방지하고자 index 파일에 모아줍니다.
+✋ Entity는 임포트의 편리함과, 중복 선언 등을 방지하고자 index 파일에 모아줍니다.
 
 - ex) entity에서 (post 도메인에 CATEGORY_TYPE, comment 도메인에 CATEGORY_TYPE 두가지 enum이 중복되게 있을 수 없습니다.)
 
-다양한 아키텍처와 마찬가지로 클린 아키텍처의 주요 목적은 관심사를 분리하는 것입니다. 각 관심사에 따라 계층 구조를 나누고, 세부 구현보다는 도메인 중심으로 설계하고 내부 영역이 프레임 워크 또는 데이터베이스 UI와 같은 외부 요소에 의존하지 않는지 확인합니다.
+클린 아키텍처의 주요 목적은 관심사를 분리하는 것입니다. 각 관심사에 따라 계층 구조를 나누고, 세부 구현보다는 도메인 중심으로 설계하고 내부 영역이 프레임 워크 또는 데이터베이스 UI와 같은 외부 요소에 의존하지 않는지 확인합니다.
 
 #### 세부 구현 영역과 도메인 영역을 구분합니다.
 
@@ -57,7 +81,7 @@ import Ca5 from './images/ca-ours2.png'
 - ex) 내부 영역 Entity는, 외부 영역인 UI 에 영향을 받지 않습니다.
 - ex) 설명과 달리, 내부 영역 service는 외부 영역인 repositories에 영향을 받습니다. 이는 DI 를 이용하여, 단위테스트가 가능한 형태로 구현합니다.
 
-#### 고수준 및 저수준 모듈(레이어) 모두 추상화에 의존합니다.
+#### **고수준 및 저수준 모듈(레이어) 모두 추상화에 의존합니다.**
 
 <br />
 <br />

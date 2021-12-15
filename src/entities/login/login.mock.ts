@@ -22,7 +22,7 @@ export const mockLoginsData = (): ILoginData[] => [
   },
   // 정상
   {
-    email: 'aboutdh89&naver.com',
+    email: 'aboutdh89@naver.com',
     password: 'P@ssw0rd'
   }
 ]

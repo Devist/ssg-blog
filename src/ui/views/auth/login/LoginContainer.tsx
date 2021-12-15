@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { LoginService } from '@/services/login'
-import UserRepository from '@/repositories/UserRepository'
+import { UserRepository } from '@/repositories'
 import Login from './LoginPresenter'
 import { ILoginData } from '@/entities'
 
@@ -12,7 +12,7 @@ function LoginContainer() {
   const [isPasswordValid, setIsPasswordValid] = useState<boolean>(true)
 
   const history = useHistory()
-  const loginService = new LoginService(new UserRepository())
+  const service = new LoginService(new UserRepository())
 
   // *** effects
   useEffect(() => {}, [])
@@ -20,7 +20,7 @@ function LoginContainer() {
   // 자식에게 전달하는 이벤트의 경우, handlers에 모은다.
   const handlers = {
     onSubmit: (e: React.FormEvent<HTMLFormElement>): void => {
-      loginService
+      service
         .loginUser(login)
         .then(() => {
           history.push('/posts')
@@ -30,8 +30,8 @@ function LoginContainer() {
     onChange: (e: React.ChangeEvent<HTMLInputElement>): void => {
       const { value, name } = e.target
       setLogin({ ...login, [name]: value })
-      setIsEmailValid(loginService.isValidEmail(login))
-      setIsPasswordValid(loginService.isValidPassword(login))
+      setIsEmailValid(service.isValidEmail(login))
+      setIsPasswordValid(service.isValidPassword(login))
     }
   }
 

@@ -8,13 +8,13 @@ type Props = {
 }
 
 function LoginPresenter({ isEmailValid, isPasswordValid, onSubmit, onChange }: Props) {
-  // 내부에서 처리하는 경우, events에 구현한다.
+  // 내부에서 처리하는 경우(화면구성에서 발생하는 이벤트의 경우), events에 구현한다.
   const events = {
     handleSubmit: (e: React.FormEvent<HTMLFormElement>): void => {
       e.preventDefault()
       onSubmit(e)
     },
-    onChange: (e: React.ChangeEvent<HTMLInputElement>): void => {
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>): void => {
       onChange(e)
     }
   }
@@ -33,7 +33,7 @@ function LoginPresenter({ isEmailValid, isPasswordValid, onSubmit, onChange }: P
             valid={isEmailValid}
             placeholder="이메일을 입력하세요"
             errorMessage="이메일은 5자 이상, 50자 이하이어야 하며, @가 포함되어야 합니다."
-            onChange={events.onChange}
+            onChange={events.handleChange}
           />
         </div>
         <div className="mb-6">
@@ -43,7 +43,7 @@ function LoginPresenter({ isEmailValid, isPasswordValid, onSubmit, onChange }: P
             valid={isPasswordValid}
             placeholder="비밀번호를 입력하세요"
             errorMessage="비밀번호는 8자 이상, 특수문자 포함 3개의 조합이어야 합니다."
-            onChange={events.onChange}
+            onChange={events.handleChange}
           />
         </div>
         <div className="flex items-center justify-end">

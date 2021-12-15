@@ -1,5 +1,5 @@
 import { IUser, IUserData, User } from '@/entities'
-import UserRepository from '@/repositories/UserRepository'
+import { UserRepository } from '@/repositories'
 import { IUserService } from './user.types'
 
 const idsFromEmail = {

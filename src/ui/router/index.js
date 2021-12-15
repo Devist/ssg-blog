@@ -20,7 +20,7 @@ import DefaultLayout from '@/ui/@core/layouts/DefaultLayout'
 import { useStores } from '@/stores'
 
 import { UserService } from '@/services/user'
-import UserRepository from '@/repositories/UserRepository'
+import { UserRepository } from '@/repositories'
 
 /**
  *  라우터

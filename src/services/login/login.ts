@@ -1,5 +1,5 @@
 import { ILoginData, IUserData, Login } from '@/entities'
-import UserRepository from '@/repositories/UserRepository'
+import { UserRepository } from '@/repositories'
 import { ILoginService } from './login.types'
 import Cookies from 'js-cookie'
 
@@ -44,7 +44,7 @@ export class LoginService implements ILoginService {
   }
 
   private setToken(token: number) {
-    Cookies.set('token', token, { expires: 7 })
+    Cookies.set('token', token, { expires: 1 })
   }
 
   private matchIdByFakeEmail(email: string) {

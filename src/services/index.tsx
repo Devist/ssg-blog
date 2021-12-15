@@ -1,6 +1,6 @@
 import React from 'react'
 
-import UserRepository from '@/repositories/UserRepository'
+import { UserRepository } from '@/repositories'
 import { LoginService } from '@/services/login'
 
 export default class RootService {

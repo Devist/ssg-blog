@@ -1,4 +1,4 @@
-import UserRepository from '@/repositories/UserRepository'
+import { UserRepository } from '@/repositories'
 import { UserService } from '@/services/user'
 import PostListPresenter from './PostListPresenter'
 

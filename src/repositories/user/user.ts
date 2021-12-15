@@ -1,10 +1,10 @@
 import { IUserData } from '@/entities'
 import { APIClient } from '@/network/APIClient'
 import { UserAPI } from '@/network/apis/UserAPI'
-import BaseRepository from './BaseRepository'
 import { useStores } from '@/stores/index'
+import { IUserRepository } from './user.types'
 
-export default class UsersRepository implements BaseRepository {
+export class UserRepository implements IUserRepository {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   userStore = useStores().userStore
 
@@ -18,5 +18,9 @@ export default class UsersRepository implements BaseRepository {
 
   getItem(): IUserData {
     return this.userStore.user
+  }
+
+  clearItem(): void {
+    this.userStore.initUser()
   }
 }

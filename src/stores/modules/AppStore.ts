@@ -2,6 +2,7 @@ import { makeAutoObservable } from 'mobx'
 
 type IStates = {
   openTour: boolean
+  appWidth: number
 }
 
 export class AppStore implements IStates {

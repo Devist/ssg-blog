@@ -14,11 +14,3 @@ export const getRandomCategoryType = (): CATEGORY_TYPE => {
   var key = Math.floor(Math.random() * Object.keys(CATEGORY_TYPE).length)
   return Object.values(CATEGORY_TYPE)[key]
 }
-
-export const fakePromise = (resolveValue: any): Promise<any> => {
-  return new Promise((resolve, reject) => {
-    setTimeout(function () {
-      resolve(resolveValue)
-    }, 2000)
-  })
-}

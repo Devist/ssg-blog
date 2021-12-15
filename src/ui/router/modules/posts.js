@@ -1,4 +1,5 @@
 import { lazy } from 'react'
+import Auth from '@/ui/acl/Auth'
 
 const PostRoutes = [
   {
@@ -10,7 +11,10 @@ const PostRoutes = [
     path: '/posts',
     layout: 'DefaultLayout',
     className: 'post-application',
-    component: lazy(() => import('@/ui/views/posts/list'))
+    component: Auth(
+      lazy(() => import('@/ui/views/posts/list')),
+      true
+    )
   }
 ]
 

@@ -1,5 +1,5 @@
 import { IUser, IUserData, User } from '@/entities'
-import { UserRepository } from '@/repositories'
+import { IUserRepository } from '@/repositories'
 import { IUserService } from './user.types'
 
 const idsFromEmail = {
@@ -10,7 +10,7 @@ const idsFromEmail = {
   default: -1
 }
 export class UserService implements IUserService {
-  constructor(private readonly userRepository: UserRepository) {}
+  constructor(private readonly userRepository: IUserRepository) {}
 
   getUser(): IUser {
     return new User(this.userRepository.getItem())

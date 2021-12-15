@@ -1,4 +1,3 @@
-import { fakePromise } from '@/utils/faker'
 import { mockUsersData } from '@/entities'
 import { IUserRepositoryMock } from './user.types'
 

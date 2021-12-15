@@ -1,7 +1,7 @@
 import { IUserData } from '@/entities'
 import { APIClient } from '@/network/APIClient'
 import { UserAPI } from '@/network/apis/UserAPI'
-import { useStores } from '@/stores/index'
+import { useStores } from '@/stores'
 import { IUserRepository } from './user.types'
 
 export class UserRepository implements IUserRepository {

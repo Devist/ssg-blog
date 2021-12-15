@@ -1,5 +1,4 @@
 import { ILoginData, IUserData, Login } from '@/entities'
-import { UserRepository } from '@/repositories'
 import { ILoginService } from './login.types'
 import Cookies from 'js-cookie'
 import { IUserRepository, IUserRepositoryMock } from '@/repositories'

@@ -2,6 +2,9 @@ import { useEffect } from 'react'
 import { useStores } from '@/stores'
 import { ROLES } from '@/ui/acl/permission-maps'
 
+// *** Cookies
+import Cookies from 'js-cookie'
+
 function Auth(SpecificComponent, option, adminRoute = null) {
   //SpecificComponent : LandingPage component
 
@@ -14,11 +17,14 @@ function Auth(SpecificComponent, option, adminRoute = null) {
   // 권한 체크 수행
   function AuthenticationCheck(props) {
     const { userStore } = useStores()
-    const { role, id } = userStore
+    const { role } = userStore
+    // token 가져오기
+    const token = Cookies.get('token')
+    userStore.token = token
 
     useEffect(() => {
       if (option === true) {
-        if (!id || id < 0) {
+        if (!token || token < 0) {
           props.history.push('/login')
         }
       }

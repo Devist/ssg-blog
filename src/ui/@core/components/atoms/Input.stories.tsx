@@ -1,4 +1,4 @@
-import Input from '@/ui/@core/components/atoms/input'
+import Input from '@/ui/@core/components/atoms/Input'
 
 import { Meta, Story } from '@storybook/react'
 

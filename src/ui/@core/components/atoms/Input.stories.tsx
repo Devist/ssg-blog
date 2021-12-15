@@ -19,7 +19,7 @@ export default {
     docs: {
       description: {
         component:
-          "<strong>import Input from '@/ui/@core/components/atoms/input'</strong> <br/> 입력창입니다."
+          "<strong>import Input from '@/ui/@core/components/atoms/Input'</strong> <br/> 입력창입니다."
         // subcomponents: {
         //   IconOnly: 'hello'
         // }

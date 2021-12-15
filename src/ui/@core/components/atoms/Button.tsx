@@ -32,8 +32,9 @@ function Button({ id, type, children, color, onClick }: Props) {
             [`hover:bg-${color}-700`]: true
           }
         )}
-        onClick={clickHandler}
-      />
+        onClick={clickHandler}>
+        {children}
+      </button>
     </>
   )
 }

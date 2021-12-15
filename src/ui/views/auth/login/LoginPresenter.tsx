@@ -1,4 +1,5 @@
-import Input from '@/ui/@core/components/atoms/input'
+import Input from '@/ui/@core/components/atoms/Input'
+import Button from '@/ui/@core/components/atoms/Button'
 
 type Props = {
   isEmailValid: boolean
@@ -47,11 +48,7 @@ function LoginPresenter({ isEmailValid, isPasswordValid, onSubmit, onChange }: P
           />
         </div>
         <div className="flex items-center justify-end">
-          <button
-            className="bg-primary hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="submit">
-            로그인
-          </button>
+          <Button type="submit">로그인</Button>
         </div>
       </form>
       <p className="text-center text-gray-500 text-xs">

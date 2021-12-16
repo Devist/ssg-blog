@@ -5,15 +5,15 @@ export class Comment implements IComment {
   isHidden: boolean
   isBlocked: boolean
   createdDate: string
-  postId: number
-  id: number
+  postId?: number
+  id?: number
   name: string
   email: string
   body: string
 
   constructor(data: ICommentData) {
-    this.postId = data.postId
-    this.id = data.id
+    if (data.postId) this.postId = data.postId
+    if (data.id) this.id = data.id
     this.name = data.name
     this.email = data.email
     this.body = data.body

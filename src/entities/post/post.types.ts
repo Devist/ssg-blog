@@ -5,7 +5,7 @@ export enum CATEGORY_TYPE {
 
 export interface IPostData {
   userId: number
-  id: number
+  id?: number
   title: string
   body: string
 }

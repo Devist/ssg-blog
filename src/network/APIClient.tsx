@@ -7,7 +7,8 @@ export enum HTTPMethod {
   GET = 'GET',
   POST = 'POST',
   DELETE = 'DELETE',
-  PUT = 'PUT'
+  PUT = 'PUT',
+  PATCH = 'PATCH'
 }
 
 export class APIClient {
@@ -24,8 +25,8 @@ export class APIClient {
     const isRead = request.method === HTTPMethod.GET
 
     console.log(`=======================================`)
-    console.log(`🎉 API 요청 : ${request.path}`)
-    console.log('🎉 params :', request.params)
+    console.log(`🎉 API 요청 : (${request.method}) - ${request.path}`)
+    if (request.params) console.log('🎉 params :', request.params)
 
     return new Promise<T>((resolve, reject) => {
       axios
@@ -44,8 +45,8 @@ export class APIClient {
           const response = request.parse ? request.parse(result) : APIClient.parse<T>(result)
 
           // 디버깅용
-          console.log('🎉 API 응답 :', response)
-          console.log(`=======================================`)
+          // console.log('🎉 API 응답 :', response)
+          // console.log(`=======================================`)
 
           resolve(response)
         })

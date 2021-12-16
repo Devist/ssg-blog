@@ -24,10 +24,9 @@ describe('>>> COMMENT API', () => {
     })
   })
 
-  it('>> 코멘트 삭제하기', async () => {
-    const postId = 27
+  it('>> 특정 포스트의 코멘트 삭제하기', async () => {
     const commentId = 27
-    await APIClient.shared.request(new CommentAPI.Delete(postId, commentId)).then(() => {
+    await APIClient.shared.request(new CommentAPI.Delete(commentId)).then(() => {
       expect(true).toBe(true)
     })
   })

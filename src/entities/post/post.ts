@@ -5,13 +5,13 @@ export class Post implements IPost {
   isLock: boolean
   category: CATEGORY_TYPE
   userId: number
-  id: number
+  id?: number
   title: string
   body: string
 
   constructor(data: IPostData) {
     this.userId = data.userId
-    this.id = data.id
+    if (data.id) this.id = data.id
     this.title = data.title
     this.body = data.body
 

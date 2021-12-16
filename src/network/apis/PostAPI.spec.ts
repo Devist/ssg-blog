@@ -18,20 +18,21 @@ describe('>>> POST API', () => {
   })
 
   // post 검증, 예를 들어 title 길이와 같은 테스트는 여기서 해야 될까?
-  it('>> 등록하기', async () => {
+  it('>> 등록하기', () => {
     const post: IPostData = {
       userId: 2,
       title: '안녕하세요', // 테스트 데이터는 항상 이런 식으로 X
       body: '하하호호호호호호' // 테스트 데이터는 실제와 비슷하게
     }
-    await APIClient.shared.request(new PostAPI.Create(post)).then(() => {
+    APIClient.shared.request(new PostAPI.Create(post)).then(() => {
       expect(true).toBe(true)
     })
   })
 
   it('>> 수정하기', async () => {
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    const partialPost = <IPostData>{}
+    const partialPost = <IPostData>{} // 이 코드를 통해 type의 일부만을 정의할 수 있다.
+    partialPost.id = 100
     partialPost.title = '하하하'
     await APIClient.shared.request(new PostAPI.Update(partialPost)).then(() => {
       expect(true).toBe(true)

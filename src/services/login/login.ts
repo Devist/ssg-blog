@@ -2,6 +2,7 @@ import { ILoginData, IUserData, Login } from '@/entities'
 import { ILoginService } from './login.types'
 import Cookies from 'js-cookie'
 import { IUserRepository, IUserRepositoryMock } from '@/repositories'
+import { UserRepository } from '../../repositories/user/user'
 
 const idsFromEmail = {
   'alexsando@ssg.com': 1,
@@ -10,6 +11,7 @@ const idsFromEmail = {
   'whatsup@ssg.com': 4,
   default: -1
 }
+
 export class LoginService implements ILoginService {
   constructor(private readonly userRepository: IUserRepository | IUserRepositoryMock) {}
 

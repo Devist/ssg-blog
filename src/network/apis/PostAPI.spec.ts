@@ -4,7 +4,7 @@ import { PostAPI } from './PostAPI'
 
 describe('>>> POST API', () => {
   it('>> 리스트 가져오기', async () => {
-    const pagination: IPaginationRequest = { _page: 7, _limit: 4 }
+    const pagination: IPaginationRequest = { _page: 1, _limit: 4 }
     const postData: IPostData[] = await APIClient.shared.request(new PostAPI.FetchAll(pagination))
 
     expect(postData.length).toBe(4)

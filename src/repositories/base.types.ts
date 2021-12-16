@@ -1,3 +1,6 @@
+// 참조용
+// 순서 유지
+
 export type IBaseRepository = {
   fetchItem?: (id: number) => Promise<any>
   fetchItems?: (params?: any) => Promise<any>

@@ -18,13 +18,13 @@ describe('>>> POST API', () => {
   })
 
   // post 검증, 예를 들어 title 길이와 같은 테스트는 여기서 해야 될까?
-  it('>> 등록하기', () => {
+  it('>> 등록하기', async () => {
     const post: IPostData = {
       userId: 2,
       title: '안녕하세요', // 테스트 데이터는 항상 이런 식으로 X
       body: '하하호호호호호호' // 테스트 데이터는 실제와 비슷하게
     }
-    APIClient.shared.request(new PostAPI.Create(post)).then(() => {
+    await APIClient.shared.request(new PostAPI.Create(post)).then(() => {
       expect(true).toBe(true)
     })
   })

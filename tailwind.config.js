@@ -46,7 +46,7 @@ module.exports = {
     extend: {}
   },
   variants: {},
-  plugins: [],
+  plugins: [require('@tailwindcss/line-clamp')],
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html']
 }
 

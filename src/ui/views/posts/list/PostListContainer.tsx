@@ -1,12 +1,18 @@
-import { UserRepository } from '@/repositories'
-import { UserService } from '@/services/user'
+import { PostsRepository } from '@/repositories'
+import { PostsService } from '@/services/posts'
 import PostListPresenter from './PostListPresenter'
+import { useState, useEffect } from 'react'
+import { IPost } from '@/entities'
 
 function PostListContatiner() {
-  const userService = new UserService(new UserRepository())
-  console.log(userService.getUser())
+  const [posts, setPosts] = useState<IPost[]>()
+  const postsService = new PostsService(new PostsRepository())
 
-  return <PostListPresenter />
+  useEffect(() => {
+    postsService.fetchAll().then((posts) => setPosts(posts))
+  }, [])
+
+  return <>{posts ? <PostListPresenter posts={posts} /> : <div>불러오는중...</div>}</>
 }
 
 export default PostListContatiner

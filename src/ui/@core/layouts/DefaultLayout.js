@@ -57,7 +57,7 @@ const DefaultLayout = ({ children, ...rest }) => {
       </nav>
 
       {/* 콘텐츠 영역 */}
-      <div className="container mx-auto p-1">{children}</div>
+      <div className="container sm:mx-auto p-1 pt-10">{children}</div>
     </>
   )
 }

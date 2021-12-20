@@ -24,8 +24,6 @@ export class LoginService implements ILoginService {
 
     const userId = this.matchIdByFakeEmail(loginData.email)
 
-    console.log(loginData)
-
     return await this.userRepository.fetchItem(userId).then((userData: IUserData) => {
       this.setToken(userData.id)
 

@@ -6,7 +6,7 @@ import { IUserRepository } from './user.types'
 
 export class UserRepository implements IUserRepository {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  userStore = useStores().userStore
+  constructor(private readonly userStore = useStores().userStore) {}
 
   async fetchItem(id: number): Promise<IUserData> {
     return await APIClient.shared.request(new UserAPI.Fetch(id))

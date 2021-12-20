@@ -1,4 +1,4 @@
-import Button from '@/ui/@core/components/atoms/Button'
+import Button from '@/ui/@core/components/Button'
 
 import { Meta, Story } from '@storybook/react'
 

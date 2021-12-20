@@ -1,5 +1,5 @@
-import Input from '@/ui/@core/components/atoms/Input'
-import Button from '@/ui/@core/components/atoms/Button'
+import Input from '@/ui/@core/components/forms/Input'
+import Button from '@/ui/@core/components/Button'
 
 type Props = {
   isEmailValid: boolean

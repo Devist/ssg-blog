@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 import { observer } from 'mobx-react'
 
-import logo from '@/ui/@core/assets/images/logo/logo.png'
+import logo from '@/ui/assets/images/logo/logo.png'
 import { useStores } from '@/stores'
 import { useHistory } from 'react-router-dom'
 

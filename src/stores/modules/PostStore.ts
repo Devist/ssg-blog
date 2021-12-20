@@ -12,6 +12,7 @@ export class PostStore implements IStates {
     makeAutoObservable(this)
   }
 
+  // *** actions *****************************************
   public changeLimit(limitNumber: number): void {
     this.pagination = {
       _limit: limitNumber,
@@ -19,6 +20,11 @@ export class PostStore implements IStates {
     }
   }
 
+  public updatePage(page: number, limit?: number): void {
+    limit ? (this.pagination = { _page: page, _limit: limit }) : (this.pagination._page = page)
+  }
+
+  // *** computed ****************************************
   get limit(): number {
     return this.pagination._limit
   }

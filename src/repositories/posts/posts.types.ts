@@ -7,6 +7,7 @@ export type IPostsRepository = {
   clearItem: (postID: number) => Promise<void>
 
   getPagination: () => IPaginationRequest
+  updatePagination: (page: number, limit?: number) => void
 }
 
 export type IPostsRepositoryMock = {
@@ -16,6 +17,7 @@ export type IPostsRepositoryMock = {
   clearItem: jest.Mock<Promise<void>>
 
   getPagination: jest.Mock<IPaginationRequest>
+  updatePagination: jest.Mock<void>
 }
 
 // 참조용

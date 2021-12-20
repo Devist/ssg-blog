@@ -1,0 +1,50 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true,
+    "commonjs": true
+  },
+  "parser": "@typescript-eslint/parser",
+  // jsx 사용 설정
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    // import 문에서 module을 사용합니다.
+    "sourceType": "module"
+  },
+  // React 버전을 자동으로 검색합니다.
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    }
+  },
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    // "plugin:prettier/recommended" // .prettierrc 를 직접 구성하지 않고 추천 구성을 사용할 때 활성화합니다.
+    "prettier" // .prettirrc를 직접 구성할 때 활성화합니다.
+  ],
+  "plugins": ["react-hooks", "react", "@typescript-eslint", "prettier"],
+  "ignorePatterns": ["node_modules/"],
+  "overrides": [
+    {
+      "files": ["**/*.stories.*"],
+      "rules": {
+        "import/no-anonymous-default-export": "off"
+      }
+    }
+  ],
+
+  "rules": {
+    "react-hooks/exhaustive-deps": "off",
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-namespace": "off"
+  }
+}

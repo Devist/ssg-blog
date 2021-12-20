@@ -27,4 +27,8 @@ export class PostsRepository implements IPostsRepository {
   getPagination(): IPaginationRequest {
     return this.postStore.pagination
   }
+
+  updatePagination(page: number, limit?: number | undefined): void {
+    this.postStore.updatePage(page, limit)
+  }
 }

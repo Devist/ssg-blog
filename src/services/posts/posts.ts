@@ -15,9 +15,17 @@ export class PostsService implements IPostsService {
     throw new Error('Method not implemented.')
   }
   fetchComments(postID: number): Promise<IComment[]> {
+    console.log(postID)
     throw new Error('Method not implemented.')
   }
   getComments(postID: number): Promise<IComment[]> {
+    console.log(postID)
     throw new Error('Method not implemented.')
+  }
+  getPagination(): IPaginationRequest {
+    return this.postsRepository.getPagination()
+  }
+  updatePagination(page: number, limit?: number) {
+    this.postsRepository.updatePagination(page, limit)
   }
 }

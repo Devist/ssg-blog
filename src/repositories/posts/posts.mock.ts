@@ -7,5 +7,6 @@ export const mockPostRepository = (): IPostsRepositoryMock => ({
   saveItem: jest.fn().mockResolvedValue(mockPostsData()[1]),
   clearItem: jest.fn().mockResolvedValue(null),
 
-  getPagination: jest.fn().mockReturnValue({ _limit: 12, page: 1 })
+  getPagination: jest.fn().mockReturnValue({ _limit: 12, page: 1 }),
+  updatePagination: jest.fn()
 })

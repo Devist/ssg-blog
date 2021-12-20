@@ -16,6 +16,7 @@ export interface IUser extends IUserData {
 }
 
 // 유저 관련 규칙
-export const USER_EMAIL_REG_EXP = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i
+export const USER_EMAIL_REG_EXP =
+  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i
 export const USER_MIN_EMAIL_LENGTH = 10
 export const USER_MAX_EMAIL_LENGTH = 50

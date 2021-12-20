@@ -11,6 +11,6 @@ export const getRandomDate = (): string => {
 }
 
 export const getRandomCategoryType = (): CATEGORY_TYPE => {
-  var key = Math.floor(Math.random() * Object.keys(CATEGORY_TYPE).length)
+  const key = Math.floor(Math.random() * Object.keys(CATEGORY_TYPE).length)
   return Object.values(CATEGORY_TYPE)[key]
 }

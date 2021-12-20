@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { LoginService } from '@/services/login'
 import { UserRepository } from '@/repositories'
@@ -14,12 +14,9 @@ function LoginContainer() {
   const history = useHistory()
   const service = new LoginService(new UserRepository())
 
-  // *** effects
-  useEffect(() => {}, [])
-
   // 자식에게 전달하는 이벤트의 경우, handlers에 모은다.
   const handlers = {
-    onSubmit: (e: React.FormEvent<HTMLFormElement>): void => {
+    onSubmit: (): void => {
       service
         .loginUser(login)
         .then(() => {

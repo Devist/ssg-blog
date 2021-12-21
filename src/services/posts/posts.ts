@@ -28,6 +28,7 @@ export class PostsService implements IPostsService {
     })
   }
   async fetchOne(postID: number): Promise<[IPost, IComment[]]> {
+    this.commentsRepository.updateItems(null)
     return await Promise.all([this.fetchPost(postID), this.fetchComments(postID)]).then(
       (response) => {
         this.commentsRepository.updateItems(response[1])

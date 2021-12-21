@@ -5,7 +5,7 @@ export type ICommentsRepository = {
   saveItem: (postID: number, params: ICommentData) => Promise<ICommentData>
 
   getItems: () => ICommentData[] | null
-  updateItems: (data: ICommentData[]) => void
+  updateItems: (data: ICommentData[] | null) => void
 }
 
 export type ICommentsRepositoryMock = {

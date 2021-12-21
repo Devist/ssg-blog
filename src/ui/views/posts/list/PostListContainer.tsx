@@ -5,15 +5,21 @@ import PostListPresenter from './PostListPresenter'
 
 import { IPost } from '@/entities'
 import FetchMore from '@/ui/components/FetchMore'
+import { useHistory } from 'react-router-dom'
 
 function PostListContatiner() {
+  // *** states
   const [posts, setPosts] = useState<IPost[]>()
   const [loading, setLoading] = useState(false)
 
-  const postsService = new PostsService()
+  // ***  routers
+  const history = useHistory()
 
+  // *** services
+  const postsService = new PostsService()
   const pagination = postsService.getPagination()
 
+  // *** life cycles
   useEffect(() => {
     postsService.fetchAll().then((posts) => setPosts(posts))
   }, [])
@@ -26,9 +32,17 @@ function PostListContatiner() {
     })
   }, [pagination._page])
 
+  // *** handlers
+  // 자식에게 전달하는 이벤트의 경우, handlers에 모은다.
+  const handlers = {
+    onClick: (postID: number): void => {
+      history.push(`/posts/${postID}`)
+    }
+  }
+
   return (
     <>
-      <PostListPresenter posts={posts} />
+      <PostListPresenter posts={posts} onClick={handlers.onClick} />
       <FetchMore
         loading={pagination._page !== 0 && loading}
         setPage={() => {

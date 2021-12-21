@@ -32,13 +32,19 @@ const DefaultLayout = ({ children, ...rest }) => {
     <>
       {/* 네비게이션. 추후 분리 */}
       <nav className="text-white p-2 border-b-1 border-gray-400 ">
-        <ul className="container mx-auto flex justify-between items-center max-w-screen-xl">
+        <ul className="container mx-auto flex justify-between items-center max-w-screen-xl px-6 xl:px-0">
           <li className="mr-6">
-            <img src={logo} alt="logo" style={{ height: '36px' }} />
+            <img
+              src={logo}
+              alt="logo"
+              style={{ height: '36px' }}
+              className="cursor-pointer"
+              onClick={() => history.push('/')}
+            />
           </li>
           <div className="flex">
             <li className="mr-6">
-              <a className="text-dark hover:text-primary no-underline cursor-pointer">
+              <a className="text-dark hover:text-primary no-underline cursor-pointer hidden md:block">
                 {userStore.emailAndId}
               </a>
             </li>
@@ -57,7 +63,7 @@ const DefaultLayout = ({ children, ...rest }) => {
       </nav>
 
       {/* 콘텐츠 영역 */}
-      <div className="container sm:mx-auto p-1 pt-10 max-w-screen-xl">{children}</div>
+      <div className="container sm:mx-auto p-1 pt-10 max-w-screen-xl px-6 xl:px-0">{children}</div>
     </>
   )
 }

@@ -21,7 +21,7 @@ export class CommentsRepository implements ICommentsRepository {
     return this.postStore.currentComments
   }
 
-  updateItems(data: ICommentData[]) {
+  updateItems(data: ICommentData[] | null) {
     this.postStore.currentComments = data
   }
 }

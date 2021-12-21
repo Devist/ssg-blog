@@ -1,9 +1,8 @@
-import Button from '@/ui/@core/components/Button'
-
 import { Meta, Story } from '@storybook/react'
+import Button from './Button'
 
 export default {
-  title: '🎨 디자인시스템 / 컴포넌트 / Atoms ',
+  title: '🎨 디자인시스템 / 컴포넌트(@core) / 🦠 Atoms / Button',
   component: Button,
   argTypes: {
     id: { control: 'text', default: null },
@@ -38,9 +37,9 @@ const Template: Story = (args: any) => {
   return <Button {...args} />
 }
 
-export const first = Template.bind({})
+export const firstButton = Template.bind({})
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-first.storyName = '버튼'
-first.args = {
+firstButton.storyName = 'Button'
+firstButton.args = {
   children: '버튼'
 }

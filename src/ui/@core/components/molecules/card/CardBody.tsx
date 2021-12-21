@@ -3,7 +3,7 @@ interface Props {
 }
 
 function CardBody({ children }: Props) {
-  return <div className="pb-4">{children}</div>
+  return <div className="pb-4 px-6">{children}</div>
 }
 
 export default CardBody

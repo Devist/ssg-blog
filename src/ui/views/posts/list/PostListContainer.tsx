@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 
-import { PostsRepository } from '@/repositories'
 import { PostsService } from '@/services/posts'
 import PostListPresenter from './PostListPresenter'
 
@@ -11,7 +10,7 @@ function PostListContatiner() {
   const [posts, setPosts] = useState<IPost[]>()
   const [loading, setLoading] = useState(false)
 
-  const postsService = new PostsService(new PostsRepository())
+  const postsService = new PostsService()
 
   const pagination = postsService.getPagination()
 
@@ -22,7 +21,6 @@ function PostListContatiner() {
   useEffect(() => {
     setLoading(true)
     postsService.fetchAll().then((nextPosts: IPost[]) => {
-      console.log('here')
       setPosts((prev: IPost[] | undefined) => (prev ? [...prev, ...nextPosts] : nextPosts))
       setLoading(false)
     })

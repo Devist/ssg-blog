@@ -1,6 +1,6 @@
-import Card from '@/ui/@core/components/card/Card'
-import CardTitle from '@/ui/@core/components/card/CardTitle'
-import CardBody from '@/ui/@core/components/card/CardBody'
+import Card from '@/ui/@core/components/molecules/card/Card'
+import CardTitle from '@/ui/@core/components/molecules/card/CardTitle'
+import CardBody from '@/ui/@core/components/molecules/card/CardBody'
 import { IPost } from '@/entities'
 
 interface Props {

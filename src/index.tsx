@@ -4,7 +4,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import '@/ui/@core/scss/index.css'
-import 'react-loading-skeleton/dist/skeleton.css'
+import '@/ui/@core/scss/skeleton.css'
 
 // ** Lazy load app
 const LazyApp = lazy(() => import('./ui/App'))

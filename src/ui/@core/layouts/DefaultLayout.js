@@ -31,8 +31,8 @@ const DefaultLayout = ({ children, ...rest }) => {
   return (
     <>
       {/* 네비게이션. 추후 분리 */}
-      <nav className="text-white p-2 border-b-1 border-gray-400">
-        <ul className="container mx-auto flex justify-between items-center">
+      <nav className="text-white p-2 border-b-1 border-gray-400 ">
+        <ul className="container mx-auto flex justify-between items-center max-w-screen-xl">
           <li className="mr-6">
             <img src={logo} alt="logo" style={{ height: '36px' }} />
           </li>
@@ -57,7 +57,7 @@ const DefaultLayout = ({ children, ...rest }) => {
       </nav>
 
       {/* 콘텐츠 영역 */}
-      <div className="container sm:mx-auto p-1 pt-10">{children}</div>
+      <div className="container sm:mx-auto p-1 pt-10 max-w-screen-xl">{children}</div>
     </>
   )
 }

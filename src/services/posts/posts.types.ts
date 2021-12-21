@@ -2,10 +2,9 @@ import { IComment, IPost } from '@/entities'
 
 export interface IPostsService {
   fetchAll(): Promise<IPost[]>
-  fetchOne(): Promise<IPost>
-  fetchComments(postID: number): Promise<IComment[]>
-  getComments(postID: number): Promise<IComment[]>
+  fetchOne(postID: number): Promise<[IPost, IComment[]]>
 
+  getComments(): IComment[] | undefined
   getPagination(): IPaginationRequest
 }
 

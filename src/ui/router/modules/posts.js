@@ -5,7 +5,10 @@ const PostRoutes = [
   {
     path: '/posts/:id',
     layout: 'DefaultLayout',
-    component: lazy(() => import('@/ui/views/posts/detail'))
+    component: Auth(
+      lazy(() => import('@/ui/views/posts/detail')),
+      true
+    )
   },
   {
     path: '/posts',

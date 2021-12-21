@@ -3,26 +3,28 @@ import classNames from 'classnames'
 interface Props {
   children?: React.ReactNode
   className?: string
+  shadow?: boolean
   outline: boolean
 }
 
-function Card({ children, className, outline }: Props) {
+function Card({ children, className, outline, shadow }: Props) {
   const classes = classNames(
-    className,
     'card',
-    'px-6 py-1',
+    'p-1',
     'rounded-xl',
     'overflow-hidden',
-    'shadow-lg',
+    shadow ? 'shadow-lg' : null,
     'border-dark',
-    outline ? 'border-1' : 'border-0'
+    outline ? 'border-1' : 'border-0',
+    className
   )
 
   return <div className={classes}>{children}</div>
 }
 
 Card.defaultProps = {
-  outline: true
+  outline: true,
+  shadow: true
 }
 
 export default Card

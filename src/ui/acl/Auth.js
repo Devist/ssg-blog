@@ -27,7 +27,7 @@ function Auth(SpecificComponent, option, adminRoute = null) {
     useEffect(() => {
       if (option === true) {
         if (!token || token < 0) {
-          props.history.push('/login')
+          props.history.push('/auth/login')
         }
       }
       if (adminRoute && role === ROLES.ADMIN) {

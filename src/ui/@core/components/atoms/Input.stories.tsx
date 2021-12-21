@@ -3,7 +3,7 @@ import Input from './Input'
 import { Meta, Story } from '@storybook/react'
 
 export default {
-  title: '🎨 디자인시스템 / 컴포넌트 / Atoms / Input',
+  title: '🎨 디자인시스템 / 컴포넌트(@core) / 🦠 Atoms / Input',
   component: Input,
   argTypes: {
     value: { control: 'text', default: null, description: '입력창의 초기 텍스트입니다.' },

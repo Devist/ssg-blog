@@ -17,20 +17,7 @@ export class UserStore implements IStates {
     this.token = this.getInitToken()
   }
 
-  private getInitUser(): IUserData {
-    return {
-      name: '',
-      email: '',
-      id: -1,
-      phone: ''
-    }
-  }
-
-  private getInitToken(): number {
-    return -1
-  }
-
-  // *** mutations **************************************
+  // *** actions **************************************
   public updateUser(user: IUserData): void {
     this.user = user
     this.token = user.id
@@ -44,6 +31,20 @@ export class UserStore implements IStates {
   // *** computed ***************************************
   get emailAndId() {
     return `${this.user.email}(ID : ${this.user.id})`
+  }
+
+  // *** privates ***************************************
+  private getInitUser(): IUserData {
+    return {
+      name: '',
+      email: '',
+      id: -1,
+      phone: ''
+    }
+  }
+
+  private getInitToken(): number {
+    return -1
   }
 }
 

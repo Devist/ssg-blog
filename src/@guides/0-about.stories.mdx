@@ -114,7 +114,64 @@ import StackAlt from './assets/stackalt.svg'
   
 `}</style>
 
-# 리액트 스터디 모임 문서에 오신 것을 환영합니다!
+# 안녕하세요!
+
+<br />
+
+### 해당 프로젝트는 React + Mobx + Typescript + tailwindCSS + Cypress로 구성되어 있습니다.
+
+- 언어 : Typescript
+- 구현 :
+  - 아키텍쳐 : Clean Architecture
+  - UI 구현 : React(with Atomic design)
+- 저장소 : Mobx
+- 마크업 : TailwindCSS
+- 가이드 : Storybook
+- 단위 테스트 : jest
+- E2E 테스트 : cypress
+
+<br />
+
+## 다음의 경우 해당 프로젝트를 사용합니다.
+
+- SEO가 필요하지 않은 경우 (ex: 임직원 대상 내부 서비스)
+- 웹 서버 부담을 줄이고자 하는 경우
+- 별도 퍼블리셔가 있는 경우 (퍼블리셔 대상으로 tailwindcss 교육 필요)
+
+<br />
+
+## **구조나 사용 기술을 마음껏 변형해서 사용합니다.**
+
+더 나은 구조, 더 나은 코드, 더 나은 기술에 대한 아이디어가 있다면, 언제든 변형하여 사용하셔도 됩니다. 다음의 경우 알려주시거나 요청하시면, 지원하거나 해당 프로젝트를 업그레이드 하겠습니다.
+
+- 좀 더 나은 레이아웃 구조 필요(ex. 넓은화면에선 사이드바가 표시되고, 모바일 화면에서는 메뉴 아이콘으로 대체되도록 동작하는 레이아웃)
+- 모듈의 버전업( ex. axio, react-router-dom 등)
+- store를 직접 접근하는 구조로 변경
+
+<br />
+
+## **스토리북 메뉴 소개**
+
+해당 스토리북은 필요한 순서, 또는 연계되는 순서, 개발 순서대로 문서가 기록되어 있습니다.
+
+개발 가이드이건 디자인 시스템이건, 전체를 알고싶으신 경우 사이드바의 맨 위부터 맨 아래 방향으로 읽어가시면 수월할 수 있습니다.
+
+<p className="bg-blue-300 p-2 text-dark text-lg "> > 개발 가이드 : </p>
+개발 전 과정에 대해 안내합니다.
+
+- 설치 ~ 개발 환경 세팅
+- 프로젝트의 구조에 대한 이해와 학습
+- 개발 프로세스 (코드스타일, 구조 내 개발 방안, 컴포넌트 설계 등)
+
+이 프로젝트에서는 개발 중 매번 참조할 수 있도록 스토리북에 포함시켰지만, ** 스토리북을 사용하되 개발 가이드는 별도로 confluence 등에 문서화할 예정인 경우 `src/@guides` 폴더를 삭제하면 됩니다. **
+
+<p className="bg-rose-400 p-2 text-white text-lg font-bold"> > 디자인 시스템 : </p>
+실제로 스토리북에 있어야 할, 디자인시스템에 대한 안내와 예시를 제공합니다.
+
+- @core 컴포넌트와 @project 컴포넌트를 `개발가이드 / 컴포넌트 설계 ` 를 참조하여 잘 나눌 경우, 여러 프로젝트에서 사용할 수 있는 UI Template을 완성할 수 있습니다. (단, 현재 프로젝트의 컴포넌트 자체의 코드나 방식은 좋은 형태가 아닐 수 있습니다.)
+- 사용할 프로젝트에서만 사용할 예정인 디자인인 경우, 굳이 @core를 별도로 두지 않아도 됩니다.
+
+<!-- # 리액트 스터디 모임 문서에 오신 것을 환영합니다!
 
 Storybook helps you build UI components in isolation from your app's business logic, data, and context.
 That makes it easy to develop hard-to-reach states. Save these UI states as **stories** to revisit during development, testing, or QA.
@@ -203,4 +260,4 @@ We recommend building UIs with a [**component-driven**](https://componentdriven.
 <div className="tip-wrapper">
   <span className="tip">Tip</span>Edit the Markdown in{' '}
   <code>src/stories/Introduction.stories.mdx</code>
-</div>
+</div> -->

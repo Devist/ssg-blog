@@ -1,6 +1,11 @@
 import { IPost } from '@/entities'
+import { UserService } from '@/services/user'
 import Profile from '@/ui/@core/components/organisms/profile'
+import { useEffect, useState } from 'react'
 import Skeleton from 'react-loading-skeleton'
+import { ROLES, SCOPES } from '@/ui/acl/permission-maps'
+import PermissionsGate from '@/ui/acl/PermissionsGate'
+import Button from '@/ui/@core/components/atoms/Button'
 
 interface Props {
   item: IPost | undefined
@@ -8,6 +13,15 @@ interface Props {
 }
 
 function Post({ item, loading }: Props) {
+  const [role, setRole] = useState<ROLES>(ROLES.USER)
+
+  const userService = new UserService()
+
+  useEffect(() => {
+    if (!item) return
+    userService.getUser().id === item.userId ? setRole(ROLES.EDITOR) : setRole(ROLES.USER)
+  }, [item])
+
   return (
     <>
       {/* title */}
@@ -20,12 +34,20 @@ function Post({ item, loading }: Props) {
       <>
         {loading && <Skeleton width={200} height={45} className="mt-6 mb-4" />}
         {item && (
-          <Profile
-            name={`작성자`}
-            subName={`ID : ${item.id}`}
-            size={45}
-            className="pt-6 pb-4 px-1"
-          />
+          <div className="flex justify-between items-center">
+            <Profile
+              name={`작성자`}
+              subName={`ID : ${item.userId}`}
+              size={45}
+              className="pt-6 pb-4 px-1"
+            />
+            <PermissionsGate role={role} scopes={[SCOPES.canEdit]}>
+              <div>
+                <Button className="mx-2">수정</Button>
+                <Button color="warning">삭제</Button>
+              </div>
+            </PermissionsGate>
+          </div>
         )}
       </>
 

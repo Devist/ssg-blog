@@ -9,13 +9,14 @@ type Props = {
   children?: React.ReactNode
   color?: string
   type?: 'button' | 'submit' | 'reset'
+  className?: string
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 /**
  * button 컴포넌트
  */
-function Button({ id, type, children, color, onClick }: Props) {
+function Button({ id, type, children, color, className, onClick }: Props) {
   const clickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     onClick && onClick(e)
   }
@@ -30,7 +31,8 @@ function Button({ id, type, children, color, onClick }: Props) {
           {
             [`bg-${color}`]: true,
             [`hover:bg-${color}-700`]: true
-          }
+          },
+          className
         )}
         onClick={clickHandler}>
         {children}

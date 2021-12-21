@@ -1,7 +1,6 @@
 import { ICommentData } from '@/entities'
 import { APIClient } from '@/network/APIClient'
 import { CommentAPI } from '@/network/apis/CommentAPI'
-import { PostAPI } from '@/network/apis/PostAPI'
 import { useStores } from '@/stores'
 import { ICommentsRepository } from './comments.types'
 

@@ -37,7 +37,7 @@ const Router = () => {
   userStore.token = token
   userStore.user.id = token
 
-  const userService = new UserService(new UserRepository())
+  const userService = new UserService()
   if (token) userService.fetchUser(token)
 
   const NotAuthorized = lazy(() => import('@/ui/views/errors/NotAuthorized'))

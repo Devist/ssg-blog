@@ -2,7 +2,7 @@ import { IPost } from '@/entities'
 
 import { PostsService } from '@/services/posts'
 import { useEffect, useState } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import PostDetailPresenter from './PostDetailPresenter'
 
 function PostDetailContainer() {

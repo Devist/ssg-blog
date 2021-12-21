@@ -5,6 +5,5 @@ export interface IUserService {
 }
 
 export interface IUserServiceMock {
-  loginUser: jest.Mock<Promise<any>>
   getUser: jest.Mock<IUserData>
 }

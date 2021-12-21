@@ -1,12 +1,12 @@
-export const ROLES = {
-  USER: 'user',
-  EDITOR: 'editor'
+export enum ROLES {
+  USER = 'user',
+  EDITOR = 'editor'
 }
 
-export const SCOPES = {
-  canEdit: 'can-edit',
-  canDelete: 'can-delete',
-  canView: 'can-view'
+export enum SCOPES {
+  canEdit = 'can-edit',
+  canDelete = 'can-delete',
+  canView = 'can-view'
 }
 
 export const PERMISSIONS = {

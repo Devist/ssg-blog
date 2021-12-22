@@ -6,7 +6,7 @@ type IStates = {
 }
 export class PostStore implements IStates {
   // *** states *****************************************
-  public pagination: IPaginationRequest = { _limit: 16, _page: 1 }
+  public pagination: IPaginationRequest = { _limit: 16, _page: 0 }
   public posts: IPostData[] | [] = []
   public currentPost: IPostData | null = null
   public currentComments: ICommentData[] | null = null
@@ -29,7 +29,6 @@ export class PostStore implements IStates {
   }
 
   public addPosts(posts: IPostData[]) {
-    console.log('post', posts)
     this.posts = [...this.posts, ...posts]
   }
 

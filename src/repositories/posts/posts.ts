@@ -24,11 +24,19 @@ export class PostsRepository implements IPostsRepository {
     return await APIClient.shared.request(new PostAPI.Delete(postID))
   }
 
+  getItems(): IPostData[] {
+    return this.postStore.posts
+  }
+
+  addPosts(posts: IPostData[]): void {
+    this.postStore.addPosts(posts)
+  }
+
   getPagination(): IPaginationRequest {
     return this.postStore.pagination
   }
 
-  updatePagination(page: number, limit?: number | undefined): void {
-    this.postStore.updatePage(page, limit)
+  updatePagination(pagination: IPaginationRequest): void {
+    this.postStore.updatePage(pagination)
   }
 }

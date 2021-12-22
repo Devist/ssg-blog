@@ -21,12 +21,16 @@ export class PostsService implements IPostsService {
       | ICommentsRepositoryMock = new CommentsRepository()
   ) {}
 
-  async fetchAll(): Promise<IPost[]> {
+  async fetchMore(): Promise<void> {
+    this.updatePagination()
     const pagination = this.postsRepository.getPagination()
-    return await this.postsRepository.fetchItems(pagination).then((posts: IPostData[]) => {
-      return posts.map((item) => new Post(item))
+
+    await this.postsRepository.fetchItems(pagination).then((posts: IPostData[]) => {
+      this.postsRepository.addPosts(posts)
+      posts.map((item) => new Post(item))
     })
   }
+
   async fetchOne(postID: number): Promise<[IPost, IComment[]]> {
     this.commentsRepository.updateItems(null)
     return await Promise.all([this.fetchPost(postID), this.fetchComments(postID)]).then(
@@ -37,14 +41,21 @@ export class PostsService implements IPostsService {
     )
   }
 
+  getPosts(): IPost[] {
+    return this.postsRepository.getItems()?.map((item) => new Post(item))
+  }
+
   getComments(): IComment[] | undefined {
     return this.commentsRepository.getItems()?.map((item) => new Comment(item))
   }
-  getPagination(): IPaginationRequest {
-    return this.postsRepository.getPagination()
-  }
-  updatePagination(page: number, limit?: number) {
-    this.postsRepository.updatePagination(page, limit)
+
+  private updatePagination() {
+    let pagination = this.postsRepository.getPagination()
+    pagination = {
+      _page: pagination._page + 1,
+      _limit: pagination._limit
+    }
+    this.postsRepository.updatePagination(pagination)
   }
 
   private fetchPost(postID: number): Promise<IPost> {

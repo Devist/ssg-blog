@@ -6,8 +6,10 @@ export type IPostsRepository = {
   saveItem: (params: IPostData) => Promise<IPostData>
   clearItem: (postID: number) => Promise<void>
 
+  getItems: () => IPostData[]
   getPagination: () => IPaginationRequest
-  updatePagination: (page: number, limit?: number) => void
+  addPosts: (posts: IPostData[]) => void
+  updatePagination: (params: IPaginationRequest) => void
 }
 
 export type IPostsRepositoryMock = {
@@ -16,7 +18,9 @@ export type IPostsRepositoryMock = {
   saveItem: jest.Mock<Promise<IPostData>>
   clearItem: jest.Mock<Promise<void>>
 
+  getItems: jest.Mock<IPostData[]>
   getPagination: jest.Mock<IPaginationRequest>
+  addPosts: jest.Mock<void>
   updatePagination: jest.Mock<void>
 }
 

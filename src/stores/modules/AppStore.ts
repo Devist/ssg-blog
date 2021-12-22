@@ -6,8 +6,8 @@ type IStates = {
 }
 
 export class AppStore implements IStates {
-  public openTour: boolean = false
-  public appWidth: number = 0
+  public openTour = false
+  public appWidth = 0
 
   constructor() {
     makeAutoObservable(this)

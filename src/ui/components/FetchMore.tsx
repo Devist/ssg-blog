@@ -15,7 +15,6 @@ const FetchMore = ({ loading, children, setPage }: Props) => {
   useEffect(() => {
     if (fetchMoreTrigger.current) fetchMoreObserver.observe(fetchMoreTrigger.current)
     return () => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
       if (fetchMoreTrigger.current) fetchMoreObserver.unobserve(fetchMoreTrigger.current)
     }
   }, [])

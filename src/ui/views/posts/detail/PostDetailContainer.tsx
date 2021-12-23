@@ -7,6 +7,7 @@ import PostDetailPresenter from './PostDetailPresenter'
 function PostDetailContainer() {
   const { id } = useParams()
   const [post, setPost] = useState<IPost>()
+  const [loading, setLoading] = useState<boolean>(true)
   const postsService = new PostsService()
 
   useEffect(() => {
@@ -14,9 +15,13 @@ function PostDetailContainer() {
     postID && postsService.fetchOne(postID).then(([post]) => setPost(post))
   }, [])
 
+  useEffect(() => {
+    post && setLoading(false)
+  }, [post])
+
   return (
     <>
-      <PostDetailPresenter post={post} comments={postsService.getComments()} />
+      <PostDetailPresenter loading={loading} post={post} comments={postsService.getComments()} />
     </>
   )
 }

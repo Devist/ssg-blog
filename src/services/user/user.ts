@@ -13,26 +13,24 @@ const idsFromEmail = {
 export class UserService implements IUserService {
   constructor(private readonly userRepository: IUserRepository = new UserRepository()) {}
 
-  getUser(): IUser {
-    return new User(this.userRepository.getItem())
-  }
-
   /**
    * # 유저 정보 가져오기
-   * 성공시, 유저 정보를 저장하고 반환합니다.
+   * 성공시, 유저 정보를 반환합니다.
    */
-  fetchUser(userId: number): void {
+  async fetchUser(userId: number): Promise<IUserData> {
+    console.log(userId)
     const email =
       Object.keys(idsFromEmail).find(
-        // eslint-disable-next-line eqeqeq
-        (key) => idsFromEmail[key as keyof typeof idsFromEmail] == userId
+        (key) => idsFromEmail[key as keyof typeof idsFromEmail] === userId
       ) || 'undefined'
 
-    this.userRepository.fetchItem(userId).then((userData: IUserData) =>
-      this.userRepository.saveItem({
+    console.log('email', email)
+
+    return await this.userRepository.fetchItem(userId).then((userData: IUserData) => {
+      return {
         ...userData,
         email: email
-      })
-    )
+      }
+    })
   }
 }

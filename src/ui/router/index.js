@@ -1,24 +1,12 @@
-// ** React Imports
 import { Suspense, lazy } from 'react'
-
-// ** Utils
-// import { isUserLoggedIn } from '@/utils'
-
-// ** Router Components
 import { BrowserRouter as AppRouter, Route, Switch, Redirect } from 'react-router-dom'
-
-// ** Routes & Default Routes
 import { DefaultRoute, Routes } from './modules'
-
-// *** Cookies
-import Cookies from 'js-cookie'
 
 // ** 레이아웃
 import BlankLayout from '@/ui/@core/layouts/BlankLayout'
 import DefaultLayout from '@/ui/@core/layouts/DefaultLayout'
 
-import { useStores } from '@/stores'
-
+import { useStores } from '@/ui/stores'
 import { UserService } from '@/services/user'
 import { UserRepository } from '@/repositories'
 
@@ -33,12 +21,10 @@ const Router = () => {
   const { userStore } = useStores()
 
   // token 가져오기
-  const token = Cookies.get('token')
-  userStore.token = token
-  userStore.user.id = token
+  const token = parseInt(new UserRepository().getToken())
 
   const userService = new UserService()
-  if (token) userService.fetchUser(token)
+  if (token) userService.fetchUser(token).then((user) => userStore.setUser(user))
 
   const NotAuthorized = lazy(() => import('@/ui/views/errors/NotAuthorized'))
   const NotFound = lazy(() => import('@/ui/views/errors/NotFound'))
@@ -135,9 +121,6 @@ const Router = () => {
 
   return (
     <AppRouter>
-      {/* {userStore.name.length === 0 ? (
-        <div>hello</div>
-      ) : ( */}
       <Switch>
         {/* 사용자가 로그인 한 경우 사용자를 DefaultRoute 로 리디렉션하고 그렇지 않으면 로그인합니다. */}
         <Route

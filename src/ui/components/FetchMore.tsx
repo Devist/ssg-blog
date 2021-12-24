@@ -3,13 +3,13 @@ import React, { useRef, useEffect } from 'react'
 interface Props {
   loading: boolean
   children?: React.ReactChild
-  setPage: () => void
+  onScrollToBottom: () => void
 }
 
-const FetchMore = ({ loading, children, setPage }: Props) => {
+const FetchMore = ({ loading, children, onScrollToBottom }: Props) => {
   const fetchMoreTrigger = useRef<HTMLDivElement>(null)
   const fetchMoreObserver = new IntersectionObserver(([{ isIntersecting }]) => {
-    if (isIntersecting) setPage()
+    if (isIntersecting) onScrollToBottom()
   })
 
   useEffect(() => {

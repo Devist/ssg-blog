@@ -1,9 +1,9 @@
-import { IUser, IUserData } from '@/entities'
+import { IUserData } from '@/entities'
 
 export interface IUserService {
-  getUser(): IUser
+  fetchUser(userId: number): Promise<IUserData>
 }
 
 export interface IUserServiceMock {
-  getUser: jest.Mock<IUserData>
+  fetchUser(): Promise<IUserData>
 }

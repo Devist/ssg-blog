@@ -9,7 +9,6 @@ function Comment({ item }: IProps) {
   return (
     <>
       <Profile name={item.name} subName={item.email} size={30} className="pt-6 pb-4 px-1" />
-
       <div className="mt-2 text-sm">{item.body}</div>
     </>
   )

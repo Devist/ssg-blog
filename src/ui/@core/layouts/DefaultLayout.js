@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { observer } from 'mobx-react'
 
 import logo from '@/ui/assets/images/logo/logo.png'
-import { useStores } from '@/stores'
+import { useStores } from '@/ui/stores'
 import { useHistory } from 'react-router-dom'
 
 import Cookies from 'js-cookie'

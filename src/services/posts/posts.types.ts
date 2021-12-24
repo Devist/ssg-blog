@@ -1,11 +1,8 @@
 import { IComment, IPost } from '@/entities'
 
 export interface IPostsService {
-  fetchMore(): Promise<void>
+  fetchMore(pagination: IPaginationRequest): Promise<IPost[]>
   fetchOne(postID: number): Promise<[IPost, IComment[]]>
-
-  getPosts(): IPost[]
-  getComments(): IComment[] | undefined
 }
 
 export interface IPostsServiceMock {

@@ -5,16 +5,17 @@ type IStates = {
   appWidth: number
 }
 
-export class AppStore implements IStates {
-  public openTour = false
-  public appWidth = 0
+class AppStore implements IStates {
+  openTour = false
+  appWidth = 0
 
   constructor() {
     makeAutoObservable(this)
   }
 
-  public setOpenTour(open: boolean) {
+  setOpenTour(open: boolean) {
     this.openTour = open
   }
 }
-export default new AppStore()
+
+export default AppStore

@@ -8,18 +8,17 @@ import PermissionsGate from '@/ui/acl/PermissionsGate'
 import Button from '@/ui/@core/components/atoms/Button'
 
 interface Props {
-  item: IPost | undefined
+  userId: number
+  item: IPost | null
   loading: boolean
 }
 
-function Post({ item, loading }: Props) {
+function Post({ userId, item, loading }: Props) {
   const [role, setRole] = useState<ROLES>(ROLES.USER)
-
-  const userService = new UserService()
 
   useEffect(() => {
     if (!item) return
-    userService.getUser().id === item.userId ? setRole(ROLES.EDITOR) : setRole(ROLES.USER)
+    userId === item.userId ? setRole(ROLES.EDITOR) : setRole(ROLES.USER)
   }, [item])
 
   return (

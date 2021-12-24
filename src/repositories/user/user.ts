@@ -1,26 +1,19 @@
 import { IUserData } from '@/entities'
 import { APIClient } from '@/network/APIClient'
 import { UserAPI } from '@/network/apis/UserAPI'
-import { useStores } from '@/stores'
 import { IUserRepository } from './user.types'
+import Cookies from 'js-cookie'
 
 export class UserRepository implements IUserRepository {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  constructor(private readonly userStore = useStores().userStore) {}
-
   async fetchItem(id: number): Promise<IUserData> {
     return await APIClient.shared.request(new UserAPI.Fetch(id))
   }
 
-  saveItem(userData: IUserData): void {
-    this.userStore.user = userData
+  saveToken(token: number) {
+    Cookies.set('token', token, { expires: 1 })
   }
 
-  getItem(): IUserData {
-    return this.userStore.user
-  }
-
-  clearItem(): void {
-    this.userStore.initUser()
+  getToken(): number {
+    return Cookies.get('token')
   }
 }

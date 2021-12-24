@@ -1,21 +1,21 @@
 import { IComment, IPost, IUser } from '@/entities'
 import Divider from '@/ui/@core/components/atoms/Divider'
-import Comment from '@/ui/components/Comment'
-import Post from '@/ui/components/Post'
+import Comment from '@/ui/views/posts/detail/components/Comment'
+import Post from '@/ui/views/posts/detail/components/Post'
 import Skeleton from 'react-loading-skeleton'
 
 interface IProps {
-  post: IPost | undefined
+  post: IPost | null
   loading: boolean
-  comments?: IComment[] | undefined
-  user?: IUser
+  comments?: IComment[]
+  user: IUser
 }
 
 function PostDetailPresenter({ loading, post, comments, user }: IProps) {
   return (
     <div className="max-w-screen-md mx-auto px-4">
       {/* 포스팅 영역 */}
-      <Post loading={loading} item={post} />
+      <Post userId={user.id} loading={loading} item={post} />
       <Divider className="pt-8" />
 
       {/* 댓글 영역 */}

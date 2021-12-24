@@ -1,5 +1,5 @@
 import { IPost } from '@/entities'
-import PostCard from '@/ui/components/PostCard'
+import PostCard from '@/ui/views/posts/list/components/PostCard'
 import Skeleton from 'react-loading-skeleton'
 
 interface Props {

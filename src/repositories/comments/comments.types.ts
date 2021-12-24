@@ -3,17 +3,11 @@ import { ICommentData } from '@/entities'
 export type ICommentsRepository = {
   fetchItems: (postID: number) => Promise<ICommentData[]>
   saveItem: (postID: number, params: ICommentData) => Promise<ICommentData>
-
-  getItems: () => ICommentData[] | null
-  updateItems: (data: ICommentData[] | null) => void
 }
 
 export type ICommentsRepositoryMock = {
   fetchItems: jest.Mock<Promise<ICommentData[]>>
   saveItem: jest.Mock<Promise<ICommentData>>
-
-  getItems: jest.Mock<ICommentData[] | null>
-  updateItems: jest.Mock<void>
 }
 
 // 참조용

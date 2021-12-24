@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { useEffect } from 'react'
-import { useStores } from '@/stores'
+import { useStores } from '@/ui/stores'
 import { ROLES } from '@/ui/acl/permission-maps'
 
 // *** Cookies

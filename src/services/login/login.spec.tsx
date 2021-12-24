@@ -9,8 +9,8 @@ describe('>>> Login Service', () => {
       const service = new LoginService(userRepository)
 
       const userData = mockLoginsData()[4]
-      await service.loginUser(userData).then((userID: number) => {
-        expect(userID).toBe(1)
+      await service.loginUser(userData).then((userData) => {
+        expect(userData.id).toBe(1)
       })
     })
   })

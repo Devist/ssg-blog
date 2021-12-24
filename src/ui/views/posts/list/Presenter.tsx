@@ -4,15 +4,15 @@ import Skeleton from 'react-loading-skeleton'
 
 interface Props {
   posts: IPost[] | undefined
-  onClick: (postID: number) => void
+  onClick: (postId: number) => void
 }
 
 function PostListPresenter({ posts, onClick }: Props) {
   // 내부에서 처리하는 경우(화면구성에서 발생하는 이벤트의 경우), events에 구현한다.
   const events = {
-    handleClick: (postID: number | null): void => {
-      if (!postID) return
-      onClick(postID)
+    handleClick: (postId: number | null): void => {
+      if (!postId) return
+      onClick(postId)
     }
   }
   const skeletons = () => (

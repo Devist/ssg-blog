@@ -24,15 +24,15 @@ export namespace PostAPI {
   }
 
   /**
-   * 포스트 가져오기 ================== GET /posts/{postID} =================
+   * 포스트 가져오기 ================== GET /posts/{postId} =================
    */
   export class FetchOne implements APIRequest<IPostData> {
     response!: IPostData
     path = POSTS
     method = HTTPMethod.GET
     parse = (data: AxiosResponse) => data.data
-    constructor(postID: number) {
-      this.path = this.path.concat(`/${postID}`)
+    constructor(postId: number) {
+      this.path = this.path.concat(`/${postId}`)
     }
   }
 
@@ -52,7 +52,7 @@ export namespace PostAPI {
   }
 
   /**
-   * 포스트 수정하기  ================= PATCH  /posts/{postID} =====================
+   * 포스트 수정하기  ================= PATCH  /posts/{postId} =====================
    */
   export class Update implements APIRequest<IPostData> {
     response!: IPostData
@@ -67,7 +67,7 @@ export namespace PostAPI {
   }
 
   /**
-   * 포스트 삭제하기 ================== DELETE /posts/{postID}
+   * 포스트 삭제하기 ================== DELETE /posts/{postId}
    */
   export class Delete implements APIRequest<null> {
     response!: null

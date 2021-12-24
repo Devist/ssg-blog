@@ -14,8 +14,8 @@ export namespace CommentAPI {
     params?: IPaginationRequest
     method = HTTPMethod.GET
     parse = (data: AxiosResponse) => data.data
-    constructor(postID: number, params?: IPaginationRequest) {
-      this.path = `${POSTS}/${postID}/${COMMENTS}`
+    constructor(postId: number, params?: IPaginationRequest) {
+      this.path = `${POSTS}/${postId}/${COMMENTS}`
       if (params) this.params = params
     }
   }
@@ -26,8 +26,8 @@ export namespace CommentAPI {
     method = HTTPMethod.GET
     params: ICommentData
     parse = (data: AxiosResponse) => data.data
-    constructor(postID: number, params: ICommentData) {
-      this.path = `${POSTS}/${postID}/${COMMENTS}`
+    constructor(postId: number, params: ICommentData) {
+      this.path = `${POSTS}/${postId}/${COMMENTS}`
       this.params = params
     }
   }
@@ -37,8 +37,8 @@ export namespace CommentAPI {
     path: string
     method = HTTPMethod.DELETE
     parse = (data: AxiosResponse) => data.data
-    constructor(commentID: number) {
-      this.path = `${COMMENTS}/${commentID}`
+    constructor(commentId: number) {
+      this.path = `${COMMENTS}/${commentId}`
     }
   }
 }

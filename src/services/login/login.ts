@@ -1,7 +1,6 @@
 import { ILoginData, IUser, IUserData, Login, User } from '@/entities'
 import { ILoginService } from './login.types'
-
-import { IUserRepository } from '@/repositories'
+import { UserRepository } from '../../repositories/user/user'
 
 const idsFromEmail = {
   'alexsando@ssg.com': 1,
@@ -12,11 +11,11 @@ const idsFromEmail = {
 }
 
 export class LoginService implements ILoginService {
-  constructor(private readonly userRepository: IUserRepository) {}
+  constructor(private readonly userRepository = new UserRepository()) {}
 
   /**
    * # 로그인 시도
-   * 성공시, 쿠키를 저장하고, userID를 반환합니다.
+   * 성공시, 쿠키를 저장하고, userId를 반환합니다.
    */
   async loginUser(loginData: ILoginData): Promise<IUser> {
     if (loginData.password !== 'P@ssw0rd') await Promise.reject('비밀번호 틀림')
@@ -30,7 +29,6 @@ export class LoginService implements ILoginService {
         Object.keys(idsFromEmail).find(
           (key) => idsFromEmail[key as keyof typeof idsFromEmail] === userId
         ) || 'undefined'
-      console.log(userData.email)
       return new User(userData)
     })
   }

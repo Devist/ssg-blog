@@ -4,8 +4,8 @@ import { PostAPI } from '@/network/apis/PostAPI'
 
 import { IPostsRepository } from './posts.types'
 export class PostsRepository implements IPostsRepository {
-  async fetchItem(postID: number): Promise<IPostData> {
-    return await APIClient.shared.request(new PostAPI.FetchOne(postID))
+  async fetchItem(postId: number): Promise<IPostData> {
+    return await APIClient.shared.request(new PostAPI.FetchOne(postId))
   }
 
   async fetchItems(params?: IPaginationRequest | undefined): Promise<IPostData[]> {
@@ -17,7 +17,7 @@ export class PostsRepository implements IPostsRepository {
     return await APIClient.shared.request(new PostAPI.Create(params))
   }
 
-  async clearItem(postID: number): Promise<void> {
-    return await APIClient.shared.request(new PostAPI.Delete(postID))
+  async clearItem(postId: number): Promise<void> {
+    return await APIClient.shared.request(new PostAPI.Delete(postId))
   }
 }

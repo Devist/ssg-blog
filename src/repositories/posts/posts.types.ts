@@ -1,10 +1,10 @@
 import { IPostData } from '@/entities'
 
 export type IPostsRepository = {
-  fetchItem: (postID: number) => Promise<IPostData>
+  fetchItem: (postId: number) => Promise<IPostData>
   fetchItems: (params?: IPaginationRequest) => Promise<IPostData[]>
   saveItem: (params: IPostData) => Promise<IPostData>
-  clearItem: (postID: number) => Promise<void>
+  clearItem: (postId: number) => Promise<void>
 }
 
 export type IPostsRepositoryMock = {

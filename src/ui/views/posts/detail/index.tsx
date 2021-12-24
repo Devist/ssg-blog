@@ -15,11 +15,11 @@ function PostDetailContainer() {
   const postsService = new PostsService()
 
   useEffect(() => {
-    const postID = id ? parseInt(id) : null
+    const postId = id ? parseInt(id) : null
 
-    postID &&
+    postId &&
       postsService
-        .fetchOne(postID)
+        .fetchOne(postId)
         .then((post: [IPost, IComment[]]) => postStore.setPost(post[0], post[1]))
 
     return () => postStore.init()

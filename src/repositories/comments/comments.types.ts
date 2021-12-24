@@ -1,8 +1,8 @@
 import { ICommentData } from '@/entities'
 
 export type ICommentsRepository = {
-  fetchItems: (postID: number) => Promise<ICommentData[]>
-  saveItem: (postID: number, params: ICommentData) => Promise<ICommentData>
+  fetchItems: (postId: number) => Promise<ICommentData[]>
+  saveItem: (postId: number, params: ICommentData) => Promise<ICommentData>
 }
 
 export type ICommentsRepositoryMock = {

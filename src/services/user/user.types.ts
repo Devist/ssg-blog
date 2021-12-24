@@ -1,9 +1,9 @@
-import { IUserData } from '@/entities'
+import { IUser } from '@/entities'
 
 export interface IUserService {
-  fetchUser(userId: number): Promise<IUserData>
+  fetchUser(userId: number): Promise<IUser>
 }
 
 export interface IUserServiceMock {
-  fetchUser(): Promise<IUserData>
+  fetchUser(): Promise<IUser>
 }

@@ -1,43 +1,42 @@
 import { IComment, ICommentData, IPost, IPostData, Post, Comment } from '@/entities'
 
-import {
-  IPostsRepository,
-  IPostsRepositoryMock,
-  PostsRepository,
-  ICommentsRepository,
-  ICommentsRepositoryMock,
-  CommentsRepository
-} from '@/repositories'
+import { PostsRepository, CommentsRepository } from '@/repositories'
 
 import { IPostsService } from './posts.types'
 
 export class PostsService implements IPostsService {
   constructor(
-    private readonly postsRepository:
-      | IPostsRepository
-      | IPostsRepositoryMock = new PostsRepository(),
-    private readonly commentsRepository:
-      | ICommentsRepository
-      | ICommentsRepositoryMock = new CommentsRepository()
+    private readonly postsRepository = new PostsRepository(),
+    private readonly commentsRepository = new CommentsRepository()
   ) {}
 
   async fetchMore(pagination: IPaginationRequest): Promise<IPost[]> {
+    return await this.postsRepository
+      .fetchItems(pagination)
+      .then((posts: IPostData[]) => posts.map((item) => new Post(item)))
+  }
+
+  async fetchOne(postId: number): Promise<[IPost, IComment[]]> {
+    return await Promise.all([this.fetchPost(postId), this.fetchComments(postId)])
+  }
+
+  async fetchMyPost(userId: number, pagination: IPaginationRequest): Promise<IPost[]> {
     return await this.postsRepository.fetchItems(pagination).then((posts: IPostData[]) => {
       return posts.map((item) => new Post(item))
     })
   }
 
-  async fetchOne(postID: number): Promise<[IPost, IComment[]]> {
-    return await Promise.all([this.fetchPost(postID), this.fetchComments(postID)])
+  getMyPost(posts: IPost[], userId: number): IPost[] {
+    return posts.filter((post) => post.userId === userId)
   }
 
-  private fetchPost(postID: number): Promise<IPost> {
-    return this.postsRepository.fetchItem(postID).then((item: IPostData) => new Post(item))
+  private fetchPost(postId: number): Promise<IPost> {
+    return this.postsRepository.fetchItem(postId).then((item: IPostData) => new Post(item))
   }
 
-  private fetchComments(postID: number): Promise<IComment[]> {
+  private fetchComments(postId: number): Promise<IComment[]> {
     return this.commentsRepository
-      .fetchItems(postID)
+      .fetchItems(postId)
       .then((items: ICommentData[]) => items.map((item: ICommentData) => new Comment(item)))
   }
 }

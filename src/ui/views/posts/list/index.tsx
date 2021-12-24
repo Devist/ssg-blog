@@ -19,8 +19,8 @@ function PostListContatiner() {
   }, [])
 
   const handlers = {
-    onClick: (postID: number): void => {
-      history.push(`/posts/${postID}`)
+    onClick: (postId: number): void => {
+      history.push(`/posts/${postId}`)
     },
     fetchMore: async () => {
       setLoading(true)

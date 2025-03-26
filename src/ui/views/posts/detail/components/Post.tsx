@@ -33,12 +33,12 @@ function Post({ userId, item, loading }: Props) {
       <>
         {loading && <Skeleton width={200} height={45} className="mt-6 mb-4" />}
         {item && (
-          <div className="flex justify-between items-center">
+          <div className="flex items-center justify-between">
             <Profile
               name={`작성자`}
               subName={`ID : ${item.userId}`}
               size={45}
-              className="pt-6 pb-4 px-1"
+              className="px-1 pt-6 pb-4"
             />
             <PermissionsGate role={role} scopes={[SCOPES.canEdit]}>
               <div>

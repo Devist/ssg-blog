@@ -10,7 +10,7 @@ import { observer } from 'mobx-react'
 function PostDetailContainer() {
   const [loading, setLoading] = useState<boolean>(true)
   const { userStore, postStore } = useStores()
-  const { id } = useParams()
+  const { id } = useParams<{ id: string }>()
 
   const postsService = new PostsService()
 
